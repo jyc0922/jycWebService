@@ -1,4 +1,7 @@
 ## Hi there 👋
+## Hi My name is Alex.
+
+## Today's weather is warm.
 
 <!--
 **jyc0922/jyc0922** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
