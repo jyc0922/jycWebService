@@ -1,0 +1,275 @@
+<html>
+    <head>
+        <title>적벽대전</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 20px;
+                background-image: url('https://50plus.or.kr/upload/im/2017/11/1877b54d-45f8-4e2e-b522-3f68be69dbdc.jpg');
+                background-size: cover;
+            }
+
+            p {
+                font-size: 18px;
+                color: #333;                
+            }
+
+            .tab-container {
+                max-width: 800px;
+                margin: 20px auto 20px;
+            }
+
+            input[type="radio"] {
+                display: none;
+            }
+
+            label {
+                display: inline-block;
+                padding: 12px 20px;
+                background-color: lightgray;
+                margin-right: 5px;
+                cursor: pointer;
+                border-radius: 8px 8px 0 0;
+                transition: background 0.3s;
+            }
+
+            input[type="radio"]:checked + label {
+                background-color:goldenrod;
+                color: white;        
+            }
+
+            .content {
+                display: none;
+                padding: 20px;
+                border-radius: 0 18px 18px 18px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                margin-top: -5px;
+            }
+
+      /* 각각의 탭이 체크됐을 때 해당 content 보여주기 */
+                #tab1:checked ~ #content1,
+                #tab2:checked ~ #content2,
+                #tab3:checked ~ #content3,
+                #tab4:checked ~ #content4,
+                #tab5:checked ~ #content5,
+                #tab6:checked ~ #content6 
+            {display: block;}
+
+            table{
+                width: 50%;
+                margin: 10px auto 10px;
+                border-collapse: collapse;
+            }
+
+            th,td{
+                padding: 10px;
+                border: 1px solid goldenrod;
+                text-align: center;
+            }
+
+            th{
+                background-color:gold;
+            }
+            td{
+            }
+
+            tr:nth-child(even){
+                background-color:lightyellow;
+            }
+            tr:nth-child(odd){
+                background-color:lightgoldenrodyellow;
+            }
+
+
+            
+        </style>
+        
+    <body>
+      <div style="text-align: center;">
+        <h1>적벽대전</h1>
+        <h2 style="color: dimgray;">적벽대전은 삼국지의 중요한 전투 중 하나로,
+             <span style="color: red;">조조</span>와 <span style="color: green;">손권</span>, 
+             <span style="color: orange;">유비</span> 연합군 간의 대결을 다룹니다.</h2>
+        <img src="https://k-static.appmobile.cn/uploads/ext/a/t01761f5b98312e89c7.jpg" alt="적벽대전" width="400">
+      </div>
+
+      <div class="tab-container">
+        <input type="radio" id="tab1" name="tab" checked />
+        <label for="tab1">개요</label>
+
+        <input type="radio" id="tab2" name="tab" checked />
+        <label for="tab2">전투 장소</label>
+
+        <input type="radio" id="tab3" name="tab" checked />
+        <label for="tab3">전투 일시</label>
+
+        <input type="radio" id="tab4" name="tab" checked />
+        <label for="tab4">전투 양상</label>
+
+        <input type="radio" id="tab5" name="tab" checked />
+        <label for="tab5">전투 결과</label>
+
+        <input type="radio" id="tab6" name="tab" checked />
+        <label for="tab6">중요성</label>
+
+        <div class="content" id="content1">
+        <h2>개요</h2>
+        <p>적벽대전은 중국 후한 말기, 삼국 시대의 중요한 전투로, 조조의 위나라와 손권의 오나라, 유비의 촉나라 연합군 간의 전투입니다.</p>
+        </div>
+
+        <div class="content" id="content2">
+        <h2>전투 장소</h2>
+        <p>적벽대전은 중국의 적벽에서 벌어졌습니다. 이곳은 현재의 장강(양쯔강) 근처에 위치하고 있습니다.</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Chibi.jpg" alt="적벽대전" width="200" style="display: block; margin-left: auto; margin-right: auto;">
+        </div>
+
+        <div class="content" id="content3">
+        <h2>전투 일시</h2>
+        <p>적벽대전은 208년에서 209년 사이에 발생하였습니다.</p>
+        </div>  
+        
+        <div class="content" id="content4">
+        <h2>전투 양상</h2>
+        <p>
+            <ul>
+                <li>조조의 대군이 남하하면서 오나라와 촉나라 연합군이 이를 저지하기 위해 적벽에서 대치하였습니다. </li>
+                <li>연합군은 불을 이용한 전략으로 조조의 함대를 크게 무찌르며 승리하였습니다.</li>
+            </ul>
+        </p>
+        </div> 
+
+        <div class="content" id="content5">
+        <h2>전투 결과</h2>
+        <p>
+            <ul>
+                <li>적벽대전의 결과, 조조의 군대는 크게 패배하였고, 이는 삼국 시대의 판도를 크게 변화시켰습니다.</li>
+                <li>오나라와 촉나라는 연합하여 위나라에 맞서 싸울 수 있는 기반을 마련하였습니다.</li>
+            </ul>
+        </p>
+        </div> 
+
+        <div class="content" id="content6">
+        <h2>전투 일시</h2>
+        <p>
+            <ul>
+                <li>적벽대전은 삼국지의 전개에 있어 중요한 전환점이 되었습니다.</li>
+                <li>이후 오나라와 촉나라가 위나라에 맞서 싸울 수 있는 기반을 마련하였습니다.</li>
+                <li>이 전투는 또한 전략과 전술의 중요성을 강조하는 사례로 남아 있습니다.</li>
+            </ul>
+        </p>        
+        </div>              
+       
+      </div>
+
+      <div style="text-align: center;">
+        <h2>주요 인물</h2>
+        <ul style="list-style: none; padding: 0; display: flex; justify-content: space-around;">
+
+        <li style="display: flex; flex-direction: column; align-items: center;">
+            <h3><span style="color: red;">조조:</span> 위나라의 군주</h3>
+            <img src="https://p9.itc.cn/images01/20231030/651ca372646b46f58d9c32dd1233ad90.jpeg" alt="조조" width="200" height="150">
+        </li>
+        <li style="display: flex; flex-direction: column; align-items: center;">
+            <h3><span style="color: orange;">유비:</span> 촉나라의 군주</h3>
+            <img src="https://p6.itc.cn/q_70/images03/20221101/740bbac03d324bf68f6cddb5bb732ce0.jpeg" alt="유비" width="200" height="150">
+        </li>
+        <li style="display: flex; flex-direction: column; align-items: center;">
+            <h3><span style="color: green;">손권:</span> 오나라의 군주</h3>
+            <img src="https://img.huxiucdn.com/article/content/202310/23/090824463752.jpg?imageView2/2/w/1000/format/jpg/interlace/1/q/85" alt="손권" width="200" height="150">
+        </li>
+
+        </ul>
+      </div>
+
+        <h1 style="text-align: center;">적벽대전시 주요 인물의 나이</h1>
+        
+        <table>
+            <caption style="font-size: 32px; margin: 10px auto 10px;">조조진영</caption>
+            <tr>
+                <th>인물</th>
+                <th>나이</th>
+                <th>출생연도</th>
+            </tr>
+            <tr>
+                <td>조조</td>
+                <td>53세</td>
+                <td>155</td>
+            </tr>
+            <tr>
+                <td>순욱</td>
+                <td>45세</td>
+                <td>163</td>
+            <tr>
+                <td>가후</td>
+                <td>61세</td>
+                <td>147</td>
+            </tr>
+            <tr>
+                <td>조인</td>
+                <td>40세</td>
+                <td>168</td>
+            </tr>
+            <tr>
+                <td>장료</td>
+                <td>39세</td>
+                <td>169</td>
+            </tr>
+            <tr>
+                <td>정욱</td>
+                <td>67세</td>
+                <td>141</td>
+            </tr>
+            </table>
+            <br><br>
+            <table>
+            <caption style="font-size: 32px; margin: 10px auto 10px;">유비/손권진영</caption>
+            <tr>
+                <th>인물</th>
+                <th>나이</th>
+                <th>출생연도</th>
+            </tr>
+            <tr>
+                <td>유비</td>
+                <td>47세</td>
+                <td>161</td>
+            </tr>
+            <tr>
+                <td>관우</td>
+                <td>47세</td>
+                <td>161(추정)</td>
+            </tr>
+            <tr>
+                <td>장비</td>
+                <td>46세</td>
+                <td>162(추정)</td>
+            </tr>
+            <tr>
+                <td>조운</td>
+                <td>40세</td>
+                <td>168(추정)</td>
+            </tr>
+            <tr>
+                <td>제갈량</td>
+                <td>27세</td>
+                <td>181</td>
+            </tr>
+            <tr>
+                <td>손권</td>
+                <td>26세</td>
+                <td>182</td>
+            </tr>
+            <tr>
+                <td>주유</td>
+                <td>33세</td>
+                <td>175</td>
+            </tr>
+            <tr>
+                <td>노숙</td>
+                <td>36세</td>
+                <td>172</td>
+            </tr>
+            </table>
+        
+    </body>
+</html>
