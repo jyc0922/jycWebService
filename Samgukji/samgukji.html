@@ -333,6 +333,9 @@
             background: linear-gradient(135deg, var(--border-color), var(--box-bg-color));
             border-radius: 8px;
             box-shadow: 0 2px 8px var(--shadow-color);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         th, td {
@@ -341,6 +344,8 @@
             text-align: center;
             box-sizing: border-box;
             transition: background-color 0.3s ease;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.4;
         }
 
         th {
@@ -349,6 +354,70 @@
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
             font-size: 1.1em;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-variant: small-caps;
+        }
+
+        td {
+            font-size: 1em;
+            font-weight: 500;
+            color: var(--text-color);
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        /* 특별한 셀 스타일링 */
+        td:first-child {
+            font-weight: bold;
+            color: var(--link-color);
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(210, 180, 140, 0.1));
+        }
+
+        /* 숫자 데이터 셀 */
+        td:nth-child(3),
+        td:nth-child(4),
+        td:nth-child(5) {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            color: var(--link-hover-color);
+        }
+
+        /* 특정 텍스트 스타일링 - 클래스 기반 */
+        .highlight-text {
+            font-weight: bold;
+            color: var(--link-color);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+            letter-spacing: 0.3px;
+        }
+
+        .era-text {
+            font-size: 1.1em;
+            color: #8B4513;
+            font-weight: 700;
+        }
+
+        .category-text {
+            font-weight: 600;
+            color: #A0522D;
+            font-style: italic;
+        }
+
+        .region-text {
+            font-weight: 600;
+            color: #8B4513;
+        }
+
+        .event-text {
+            font-weight: 600;
+            color: #CD853F;
+        }
+
+        .literature-text {
+            font-weight: 600;
+            color: #D2691E;
+            font-style: italic;
         }
 
         tr:nth-child(even) {
@@ -408,16 +477,19 @@
 
         .time-flow-overlay .image-wrapper {
             background-color: var(--article-bg-color); /* Background for the image content */
-            padding: var(--gap-desktop);
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            max-width: 90%; /* Max width of the image container */
-            max-height: 90%; /* Max height of the image container */
-            overflow: auto; /* Enable scrolling if image is too large for wrapper */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            max-width: 80%; /* 화면 너비의 80%로 제한 */
+            max-height: 80%; /* 화면 높이의 80%로 제한 */
+            width: auto; /* 자동 너비 */
+            height: auto; /* 자동 높이 */
+            overflow: hidden; /* 스크롤 제거 */
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column; /* For title/text if added later */
+            flex-direction: column;
+            position: relative;
         }
 
         .time-flow-overlay h3 {
@@ -430,12 +502,15 @@
         }
 
         .time-flow-overlay img {
-            max-width: 100%; /* Ensure image scales down within the wrapper */
-            height: auto;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            display: block; /* Remove extra space below image */
-            margin: 0 auto; /* Center image */
+            max-width: 100%; /* 컨테이너 내에서 최대 너비 */
+            max-height: 70vh; /* 뷰포트 높이의 70%로 제한 */
+            width: auto; /* 자동 너비 */
+            height: auto; /* 자동 높이 */
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: block;
+            margin: 0 auto;
+            object-fit: contain; /* 비율 유지하면서 맞춤 */
         }
 
         /*  버튼 그룹(범주) 스타일         */
@@ -652,11 +727,13 @@
             }
 
             .time-flow-overlay .image-wrapper {
-                padding: var(--gap-mobile);
+                max-width: 95%; /* 모바일에서는 더 넓게 */
+                max-height: 85%;
+                padding: 15px;
             }
-
-            .time-flow-overlay h3 {
-                font-size: 1.5em;
+            
+            .time-flow-overlay img {
+                max-height: 60vh; /* 모바일에서는 더 작게 */
             }
 
             .toggle-btn {
@@ -694,6 +771,16 @@
 
             .time-flow-overlay h3 {
                 font-size: 1.3em;
+            }
+
+            .time-flow-overlay .image-wrapper {
+                max-width: 98%;
+                max-height: 90%;
+                padding: 10px;
+            }
+            
+            .time-flow-overlay img {
+                max-height: 50vh;
             }
         }
     </style>
@@ -898,22 +985,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>1</td><td>삼국시대</td><td colspan="2">-</td><td>184~280</td></tr>
-                    <tr><td rowspan="4">2</td><td rowspan="4">정사</td><td rowspan="2">삼국지</td><td>진수</td><td>285</td></tr>
+                    <tr><td>1</td><td class="era-text">삼국시대</td><td colspan="2">-</td><td>184~280</td></tr>
+                    <tr><td rowspan="4">2</td><td rowspan="4" class="category-text">정사</td><td rowspan="2">삼국지</td><td>진수</td><td>285</td></tr>
                     <tr><td>배송지</td><td>429</td></tr>
                     <tr><td>후한서</td><td>범엽</td><td>445</td></tr>
                     <tr><td>진서</td><td>방현령</td><td>648</td></tr>
-                    <tr><td rowspan="3">3</td><td rowspan="3">준정사</td><td>자치통감</td><td>사마광</td><td>1086</td></tr>
-                    <tr><td>자치통감강목</td><td rowspan="2">주희</td><td rowspan="2">1200</td></tr>
-                    <tr><td>자치통감강목주해</td></tr>
-                    <tr><td rowspan="2">4</td><td rowspan="2">연의</td><td rowspan="2">삼국지연의</td><td>나관중</td><td>1321</td></tr>
+                    <tr><td rowspan="3">3</td><td rowspan="3" class="category-text">준정사</td><td>자치통감</td><td>사마광</td><td>1086</td></tr>
+                    <tr><td>자치통감강목</td><td>주희</td><td>1200</td></tr>
+                    <tr><td>자치통감강목주해</td><td>세종대왕</td><td>1442</td></tr>
+                    <tr><td rowspan="2">4</td><td rowspan="2" class="category-text">연의</td><td rowspan="2">삼국지연의</td><td>나관중</td><td>1321</td></tr>
                     <tr><td>모종강</td><td>1679</td></tr>
-                    <tr><td>5</td><td>일본,한국</td><td>만화,소설,게임 등 </td><td>-</td><td>1679~(1940)~</td></tr>
-                    <tr><td>6</td><td>문화대혁명</td><td>평론</td><td>모택동</td><td>1966</td></tr>
-                    <tr><td rowspan="4">기타</td><td>시</td><td>촉상</td><td>두보</td><td>750</td></tr>
-                    <tr><td>사</td><td>적벽부</td><td>소동파</td><td>1082</td></tr>
-                    <tr><td>사서</td><td>18사략</td><td>증선지</td><td>1265</td></tr>
-                    <tr><td>소설</td><td>삼국지평화</td><td>-</td><td>1320</td></tr>
+                    <tr><td>5</td><td class="region-text">일본,한국</td><td>만화,소설,게임 등 </td><td>-</td><td>1679~(1940)</td></tr>
+                    <tr><td>6</td><td class="event-text">문화대혁명</td><td>평론</td><td>모택동</td><td>1966</td></tr>
+                    <tr><td rowspan="4">기타</td><td class="literature-text">시</td><td>촉상</td><td>두보</td><td>750</td></tr>
+                    <tr><td class="literature-text">사</td><td class="literature-text">적벽부</td><td>소동파</td><td>1082</td></tr>
+                    <tr><td>사서</td><td class="literature-text">18사략</td><td>증선지</td><td>1265</td></tr>
+                    <tr><td>소설</td><td class="literature-text">삼국지평화</td><td>-</td><td>1320</td></tr>
                 </tbody>
             </table>
         </article>
