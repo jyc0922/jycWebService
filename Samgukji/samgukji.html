@@ -12,25 +12,42 @@
             --gap-desktop: 20px;
             --gap-mobile: 15px;
             --sidebar-width-desktop: 25%;
-            --primary-bg-color: rgba(255, 255, 0, 0.4); /* Yellow with transparency */
-            --secondary-bg-color: rgba(255, 255, 136, 0.8); /* Lighter yellow with more transparency for sidebar */
-            --content-bg-color: rgba(255, 255, 136, 0.9); /* Even lighter for main content area */
-            --article-bg-color: rgba(255, 255, 0, 0.2); /* Light yellow for articles */
-            --text-color: #333;
-            --link-color: #fff;
-            --link-hover-color: #ffd700; /* Goldenrod */
-            --border-color: lightcyan;
-            --shadow-color: rgba(0, 0, 0, 0.3);
-            --tab-label-bg: #e0e0e0;
-            --tab-label-active-bg: goldenrod;
-            --tab-label-color: #555;
-            --tab-label-active-color: white;
-            --table-border-color: goldenrod;
-            --table-header-bg: bisque;
-            --table-row-even-bg: lightyellow;
-            --table-row-odd-bg: lightgoldenrodyellow;
-            --box-bg-color: gold;
-            --footer-text-color: #333; /* Darker text for footer */
+            
+            /* 양피지 느낌의 색상 팔레트 */
+            --primary-bg-color: rgba(245, 241, 230, 0.95); /* 양피지 베이스 */
+            --secondary-bg-color: rgba(250, 248, 240, 0.9); /* 밝은 양피지 */
+            --content-bg-color: rgba(252, 250, 245, 0.95); /* 매우 밝은 양피지 */
+            --article-bg-color: rgba(248, 244, 235, 0.9); /* 중간 양피지 */
+            
+            /* 텍스트 색상 */
+            --text-color: #2c2c2c; /* 진한 회색 */
+            --link-color: #8B4513; /* 갈색 링크 */
+            --link-hover-color: #A0522D; /* 호버 시 더 진한 갈색 */
+            
+            /* 테두리 및 그림자 */
+            --border-color: #D2B48C; /* 탄 베이지 */
+            --shadow-color: rgba(139, 69, 19, 0.2); /* 갈색 그림자 */
+            
+            /* 탭 스타일 */
+            --tab-label-bg: #F5F5DC; /* 베이지 */
+            --tab-label-active-bg: #8B4513; /* 갈색 */
+            --tab-label-color: #5D4037; /* 진한 갈색 */
+            --tab-label-active-color: #F5F5DC; /* 베이지 */
+            
+            /* 테이블 스타일 - 세련된 디자인 */
+            --table-border-color: #D2B48C; /* 탄 베이지 */
+            --table-header-bg: linear-gradient(135deg, #8B4513, #A0522D); /* 갈색 그라데이션 */
+            --table-header-color: #F5F5DC; /* 베이지 텍스트 */
+            --table-row-even-bg: rgba(245, 241, 230, 0.6); /* 밝은 양피지 */
+            --table-row-odd-bg: rgba(250, 248, 240, 0.8); /* 더 밝은 양피지 */
+            --table-row-hover-bg: rgba(210, 180, 140, 0.3); /* 호버 시 탄 베이지 */
+            
+            /* 박스 스타일 */
+            --box-bg-color: rgba(245, 241, 230, 0.9); /* 양피지 */
+            --box-border-color: #D2B48C; /* 탄 베이지 */
+            
+            /* 푸터 텍스트 */
+            --footer-text-color: #5D4037; /* 진한 갈색 */
         }
 
         body {
@@ -215,42 +232,55 @@
         }
 
         aside h3 {
-            color: #444;
+            color: var(--text-color);
             margin-top: 0;
             font-size: 1.3em;
             padding-bottom: 10px;
-            border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+            border-bottom: 2px solid var(--border-color);
             margin-bottom: 20px;
+            font-family: 'Georgia', serif;
         }
 
         /* Box styling within aside */
         .box {
-            background-color: var(--box-bg-color);
-            box-shadow: 2px 2px 2px 2px darkgrey;
+            background: linear-gradient(135deg, var(--box-bg-color), var(--secondary-bg-color));
+            box-shadow: 0 4px 12px var(--shadow-color);
             margin: 0; /* Removed auto margin, now flex container handles centering */
-            border-radius: 10px;
-            padding: 15px;
+            border-radius: 12px;
+            padding: 20px;
             text-align: left;
             box-sizing: border-box;
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--border-color);
             width: 100%; /* Ensure box takes full width of its parent article */
+            transition: all 0.3s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px var(--shadow-color);
         }
 
         .box h2 {
             text-align: center;
-            color: grey;
+            color: var(--text-color);
             margin-top: 0;
             margin-bottom: 15px;
-            font-size: 1.2em;
+            font-size: 1.3em;
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
         }
 
         .box ol {
             padding-left: 25px;
-            line-height: 1.6;
+            line-height: 1.8;
+            color: var(--text-color);
         }
 
         .box ol li {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-family: 'Georgia', serif;
         }
 
         /* Main content area styling */
@@ -286,32 +316,39 @@
             width: 100%;
             margin: 20px 0;
             border-collapse: collapse;
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 8px; /* Rounded table corners */
+            background-color: var(--content-bg-color);
+            box-shadow: 0 4px 15px var(--shadow-color);
+            border-radius: 12px; /* 더 둥근 모서리 */
             overflow: hidden; /* Hide overflowing borders for rounded corners */
+            border: 2px solid var(--border-color);
         }
 
         caption {
             font-size: 1.5em;
-            color: blue;
-            margin-bottom: 10px;
+            color: var(--text-color);
+            margin-bottom: 15px;
             font-weight: bold;
-            padding: 10px 0;
+            padding: 15px 0;
             text-align: center;
+            background: linear-gradient(135deg, var(--border-color), var(--box-bg-color));
+            border-radius: 8px;
+            box-shadow: 0 2px 8px var(--shadow-color);
         }
 
         th, td {
-            padding: 12px 15px;
-            border: 1px solid var(--table-border-color);
+            padding: 15px 18px;
+            border: 1px solid var(--border-color);
             text-align: center;
             box-sizing: border-box;
+            transition: background-color 0.3s ease;
         }
 
         th {
-            background-color: var(--table-header-bg);
-            color: #555;
+            background: var(--table-header-bg);
+            color: var(--table-header-color);
             font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            font-size: 1.1em;
         }
 
         tr:nth-child(even) {
@@ -320,6 +357,13 @@
 
         tr:nth-child(odd) {
             background-color: var(--table-row-odd-bg);
+        }
+
+        /* 테이블 행 호버 효과 */
+        tr:hover {
+            background-color: var(--table-row-hover-bg);
+            transform: scale(1.01);
+            transition: all 0.3s ease;
         }
 
         /* New section styling for the "시대 흐름" content */
@@ -400,17 +444,22 @@
             flex-wrap: wrap;
             justify-content: space-around;  /* 좌우 균형 배치 */
             gap: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
             margin-bottom: 20px;
-            padding: 14px 12px;
-            background-color: rgba(255, 255, 240, 0.9);
+            padding: 16px 14px;
+            background: linear-gradient(135deg, var(--box-bg-color), var(--secondary-bg-color));
+            box-shadow: 0 4px 12px var(--shadow-color);
         }
+        
         .btn-group legend {
-            padding: 0 8px;
+            padding: 0 12px;
             font-weight: 600;
-            font-family: 'Segoe UI', sans-serif;
-            color: #333;
+            font-family: 'Georgia', serif;
+            color: var(--text-color);
+            background: var(--content-bg-color);
+            border-radius: 6px;
+            box-shadow: 0 2px 4px var(--shadow-color);
         }
 
         /* === ② 탭 카드를 그리드로 배치 === */
@@ -427,16 +476,18 @@
         .nav-item {
         display: flex;
         flex-direction: column;
-        background: rgba(218,165,32,0.1); /* 연한 골든로드 배경 */
-        border: 2px solid goldenrod;
-        border-radius: 10px;
+        background: var(--box-bg-color);
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
         overflow: hidden;
         cursor: pointer;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 8px var(--shadow-color);
         }
+        
         .nav-item:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        box-shadow: 0 8px 20px var(--shadow-color);
         }
 
         /* === ④ 카드 내 이미지 스타일 === */
@@ -449,14 +500,15 @@
         /* === ⑤ 카드 내 텍스트 스타일 === */
         .nav-item h3 {
         margin: 12px 0 6px;
-        color: goldenrod;
+        color: var(--text-color);
         font-family: 'Georgia', serif;
         font-size: 1.1em;
         text-align: center;
         }
+        
         .nav-item p {
         margin: 0 10px 15px;
-        color: #555;
+        color: var(--text-color);
         font-size: 0.9em;
         text-align: center;
         line-height: 1.4;
@@ -468,29 +520,26 @@
             flex: 1 1 120px;               /* 최소 120px, 균등 확장 */
             max-width: 180px;
             margin: 6px 4px;
-            padding: 10px 0;
-            background: linear-gradient(135deg, #DAA520, #FFD700);
-            color: #555;
-            font-family: 'Segoe UI Semibold', 'Segoe UI', sans-serif;
+            padding: 12px 0;
+            background: linear-gradient(135deg, var(--border-color), var(--box-bg-color));
+            color: var(--text-color);
+            font-family: 'Georgia', serif;
             font-size: 0.95em;
             font-weight: 600;
             letter-spacing: 0.5px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            border: none;
-            border-radius: 4px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px var(--shadow-color);
             cursor: pointer;
-            transition: transform 0.1s ease, box-shadow 0.2s ease, background 0.2s ease;
+            transition: all 0.3s ease;
         }
+        
         .toggle-btn:hover {
+            background: linear-gradient(135deg, var(--link-hover-color), var(--border-color));
+            color: var(--tab-label-active-color);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-            background: linear-gradient(135deg, #FFD700, #DAA520);
-        }
-        .toggle-btn:active {
-            transform: translateY(0);
-            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-            background: #DAA520;
+            box-shadow: 0 6px 12px var(--shadow-color);
         }
 
         /* Responsive Design Media Queries */
