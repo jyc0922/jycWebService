@@ -216,19 +216,19 @@
             background-color: var(--secondary-bg-color);
             padding: var(--gap-desktop);
             box-shadow: 2px 0 5px var(--shadow-color);
-            overflow-y: auto; /* Allow scrolling for long content */
+            overflow-y: auto;
             border-radius: 10px;
-            margin-left: var(--gap-desktop); /* Left margin to align with grid */
+            margin-left: var(--gap-desktop);
             box-sizing: border-box;
-            display: flex; /* Use flexbox for vertical stacking */
-            flex-direction: column; /* Stack children vertically */
-            align-items: center; /* Center children horizontally */
-            gap: 10px; /* Smaller gap for many buttons */
+            display: grid; /* flex -> grid로 변경 */
+            grid-template-columns: 1fr 1fr; /* 2열 그리드 */
+            gap: 16px; /* 버튼 그룹 간 간격 */
+            align-items: start;
         }
 
         aside article {
-            width: 100%; /* Ensure article within aside takes full width */
-            /* Removed margin-bottom here as gap handles spacing */
+            width: 100%;
+            grid-column: 1 / -1; /* article(후한의 멸망)은 2칸 전체 차지 */
         }
 
         aside h3 {
@@ -529,7 +529,7 @@
             gap: 12px;
             border: 2px solid var(--border-color);
             border-radius: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 8px;
             padding: 16px 14px;
             background: linear-gradient(135deg, var(--box-bg-color), var(--secondary-bg-color));
             box-shadow: 0 4px 12px var(--shadow-color);
@@ -644,8 +644,11 @@
             }
 
             aside {
-                margin-left: var(--gap-mobile);
-                padding: var(--gap-mobile);
+                grid-template-columns: 1fr; /* 태블릿 이하에서는 다시 1열 */
+            }
+
+            aside article {
+                grid-column: auto;
             }
 
             main {
@@ -905,14 +908,22 @@
             <legend>역사 흐름</legend>
             <button class="toggle-btn" data-image-src="images/samgukji02.png">시대 흐름</button>
             <button class="toggle-btn" data-image-src="images/samgukji03.png">3의 세계</button>
-            <button class="toggle-btn" data-image-src="images/samgukji04.png">시대 배경</button>
+            <button class="toggle-btn" data-image-src="images/samgukjiShiDaiBeiJing.jpg">시대 배경</button>
+        </fieldset>
+
+        <!-- 4) 군주·장군·모사 -->
+        <fieldset class="btn-group">
+            <legend>군주·장군·모사</legend>
+            <button class="toggle-btn" data-image-src="images/samgukji11.png">군주편</button>
+            <button class="toggle-btn" data-image-src="images/samgukji12.png">장군편</button>
+            <button class="toggle-btn" data-image-src="images/samgukji13.png">모사편</button>
         </fieldset>
 
         <!-- 2) 문헌·이론 -->
         <fieldset class="btn-group">
             <legend>문헌·이론</legend>
             <button class="toggle-btn" data-image-src="images/samgukji05.png">정사·연의 비교</button>
-            <button class="toggle-btn" data-image-src="images/samgukji06.png">정통론</button>
+            <button class="toggle-btn" data-image-src="images/samgukjiZhengTongLun.jpg">정통론</button>
             <button class="toggle-btn" data-image-src="images/samgukji18.png">정사 평론</button>
             <button class="toggle-btn" data-image-src="images/samgukji19.png">모택동 평론</button>
         </fieldset>
@@ -926,14 +937,6 @@
             <button class="toggle-btn" data-image-src="images/samgukji10.png">인구·기후 변화</button>
         </fieldset>
 
-        <!-- 4) 텍스트 뷰 -->
-        <fieldset class="btn-group">
-            <legend>군주·장군·모사</legend>
-            <button class="toggle-btn" data-image-src="images/samgukji11.png">군주편</button>
-            <button class="toggle-btn" data-image-src="images/samgukji12.png">장군편</button>
-            <button class="toggle-btn" data-image-src="images/samgukji13.png">모사편</button>
-        </fieldset>
-
         <!-- 5) 조조 중심 -->
         <fieldset class="btn-group">
             <legend>조조 중심</legend>
@@ -943,6 +946,17 @@
             <button class="toggle-btn" data-image-src="images/samgukji22.png">인재 등용</button>
             <button class="toggle-btn" data-image-src="images/samgukji23.png">제갈량 인맥</button>
             <button class="toggle-btn" data-image-src="images/samgukji24.png">창업자·후계자</button>
+        </fieldset>
+
+        <!-- 7) 전투 및 인물 -->
+        <fieldset class="btn-group">
+            <legend>전투 및 인물</legend>
+            <button class="toggle-btn" data-image-src="images/samgukjiandyanyi.png">삼국지연의</button>
+            <button class="toggle-btn" data-image-src="images/yilingbattle.png">이릉대전</button>
+            <button class="toggle-btn" data-image-src="images/redcliffbattle.png">적벽대전</button>
+            <button class="toggle-btn" data-image-src="images/guandubattle.png">관도대전</button>
+            <button class="toggle-btn" data-image-src="images/samgukjicover.png">삼국지 표지</button>
+            <button class="toggle-btn" data-image-src="images/samgukjiperson.png">삼국지 인물</button>
         </fieldset>
 
         <!-- 6) 지도 및 인구 -->
@@ -955,17 +969,6 @@
             <button class="toggle-btn" data-image-src="images/eastHanMap2.jpg">동한지도 2</button>
             <button class="toggle-btn" data-image-src="images/samnGukPopulation.jpg">삼국 인구</button>
             <button class="toggle-btn" data-image-src="images/samGukMap.jpg">삼국지도</button>
-        </fieldset>
-
-        <!-- 7) 전투 및 인물 -->
-        <fieldset class="btn-group">
-            <legend>전투 및 인물</legend>
-            <button class="toggle-btn" data-image-src="images/samgukjiandyanyi.png">삼국지안의</button>
-            <button class="toggle-btn" data-image-src="images/yilingbattle.png">이릉대전</button>
-            <button class="toggle-btn" data-image-src="images/redcliffbattle.png">적벽대전</button>
-            <button class="toggle-btn" data-image-src="images/guandubattle.png">관도대전</button>
-            <button class="toggle-btn" data-image-src="images/samgukjicover.png">삼국지 표지</button>
-            <button class="toggle-btn" data-image-src="images/samgukjiperson.png">삼국지 인물</button>
         </fieldset>
     </aside>
 
