@@ -1326,7 +1326,7 @@
                 }
                 wrapper.innerHTML = '';
                 const canvas = document.createElement('canvas');
-                canvas.width = 490; canvas.height = 490;
+                canvas.width = 343; canvas.height = 343;
                 canvas.style.display = 'block';
                 canvas.style.margin = '0 auto 10px auto';
                 canvas.style.background = 'rgba(255,255,255,0.13)';
@@ -1375,7 +1375,7 @@
                             }
                             wrapper.innerHTML = '';
                             const canvas = document.createElement('canvas');
-                            canvas.width = 490; canvas.height = 490;
+                            canvas.width = 343; canvas.height = 343;
                             canvas.style.display = 'block';
                             canvas.style.margin = '0 auto 10px auto';
                             canvas.style.background = 'rgba(255,255,255,0.13)';
@@ -1424,7 +1424,7 @@
                             }
                             wrapper.innerHTML = '';
                             const canvas = document.createElement('canvas');
-                            canvas.width = 490; canvas.height = 490;
+                            canvas.width = 343; canvas.height = 343;
                             canvas.style.display = 'block';
                             canvas.style.margin = '0 auto 10px auto';
                             canvas.style.background = 'rgba(255,255,255,0.13)';
@@ -1472,7 +1472,7 @@
                             }
                             wrapper.innerHTML = '';
                             const canvas = document.createElement('canvas');
-                            canvas.width = 490; canvas.height = 490;
+                            canvas.width = 343; canvas.height = 343;
                             canvas.style.display = 'block';
                             canvas.style.margin = '0 auto 10px auto';
                             canvas.style.background = 'rgba(255,255,255,0.13)';
@@ -1520,7 +1520,7 @@
                             }
                             wrapper.innerHTML = '';
                             const canvas = document.createElement('canvas');
-                            canvas.width = 490; canvas.height = 490;
+                            canvas.width = 343; canvas.height = 343;
                             canvas.style.display = 'block';
                             canvas.style.margin = '0 auto 10px auto';
                             canvas.style.background = 'rgba(255,255,255,0.13)';
@@ -1568,7 +1568,7 @@
                             }
                             wrapper.innerHTML = '';
                             const canvas = document.createElement('canvas');
-                            canvas.width = 490; canvas.height = 490;
+                            canvas.width = 343; canvas.height = 343;
                             canvas.style.display = 'block';
                             canvas.style.margin = '0 auto 10px auto';
                             canvas.style.background = 'rgba(255,255,255,0.13)';
@@ -1616,7 +1616,7 @@
                             }
                             wrapper.innerHTML = '';
                             const canvas = document.createElement('canvas');
-                            canvas.width = 490; canvas.height = 490;
+                            canvas.width = 343; canvas.height = 343;
                             canvas.style.display = 'block';
                             canvas.style.margin = '0 auto 10px auto';
                             canvas.style.background = 'rgba(255,255,255,0.13)';
@@ -1664,7 +1664,7 @@
                             }
                             wrapper.innerHTML = '';
                             const canvas = document.createElement('canvas');
-                            canvas.width = 490; canvas.height = 490;
+                            canvas.width = 343; canvas.height = 343;
                             canvas.style.display = 'block';
                             canvas.style.margin = '0 auto 10px auto';
                             canvas.style.background = 'rgba(255,255,255,0.13)';
@@ -1712,7 +1712,7 @@
                             }
                             wrapper.innerHTML = '';
                             const canvas = document.createElement('canvas');
-                            canvas.width = 490; canvas.height = 490;
+                            canvas.width = 343; canvas.height = 343;
                             canvas.style.display = 'block';
                             canvas.style.margin = '0 auto 10px auto';
                             canvas.style.background = 'rgba(255,255,255,0.13)';
@@ -1760,7 +1760,7 @@
                             }
                             wrapper.innerHTML = '';
                             const canvas = document.createElement('canvas');
-                            canvas.width = 490; canvas.height = 490;
+                            canvas.width = 343; canvas.height = 343;
                             canvas.style.display = 'block';
                             canvas.style.margin = '0 auto 10px auto';
                             canvas.style.background = 'rgba(255,255,255,0.13)';
@@ -1808,7 +1808,7 @@
                             }
                             wrapper.innerHTML = '';
                             const canvas = document.createElement('canvas');
-                            canvas.width = 490; canvas.height = 490;
+                            canvas.width = 343; canvas.height = 343;
                             canvas.style.display = 'block';
                             canvas.style.margin = '0 auto 10px auto';
                             canvas.style.background = 'rgba(255,255,255,0.13)';
@@ -1856,7 +1856,7 @@
                             }
                             wrapper.innerHTML = '';
                             const canvas = document.createElement('canvas');
-                            canvas.width = 490; canvas.height = 490;
+                            canvas.width = 343; canvas.height = 343;
                             canvas.style.display = 'block';
                             canvas.style.margin = '0 auto 10px auto';
                             canvas.style.background = 'rgba(255,255,255,0.13)';
@@ -1904,7 +1904,7 @@
                             }
                             wrapper.innerHTML = '';
                             const canvas = document.createElement('canvas');
-                            canvas.width = 490; canvas.height = 490;
+                            canvas.width = 343; canvas.height = 343;
                             canvas.style.display = 'block';
                             canvas.style.margin = '0 auto 10px auto';
                             canvas.style.background = 'rgba(255,255,255,0.13)';
@@ -2141,7 +2141,7 @@
         const ctx = canvas.getContext('2d');
         const w = canvas.width, h = canvas.height;
         ctx.clearRect(0,0,w,h);
-        const cx = w/2, cy = h/2, r = Math.min(w,h)*0.38;
+        const cx = w/2, cy = h/2, r = Math.min(w,h)*0.266; // 0.38 * 0.7 = 0.266
         const N = stats.length;
         // 배경 원
         ctx.save();
@@ -2149,13 +2149,31 @@
         ctx.beginPath(); ctx.arc(cx,cy,r+10,0,2*Math.PI); ctx.fillStyle='#b6b6b6'; ctx.fill();
         ctx.globalAlpha = 1;
         // 축선 및 라벨
-        ctx.font = 'bold 1.1em "Pretendard","Inter",sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
+        // 폰트 높이 계산 (1.76em 기준, 80% of 2.2em)
+        const fontSizeEm = 2.2 * 0.8; // 1.76em
+        const fontSizePx = fontSizeEm * 16; // assuming 1em = 16px
+        ctx.font = `bold ${fontSizeEm}em "Pretendard","Inter",sans-serif`;
+        const labelPadding = 12;
+        // 라벨을 원에서 한 폰트 거리만큼만 띄움
+        const labelRadius = r + fontSizePx;
         for(let i=0;i<N;i++){
             const angle = -Math.PI/2 + i*2*Math.PI/N;
-            const x = cx + Math.cos(angle)*(r+30);
-            const y = cy + Math.sin(angle)*(r+30);
+            // '전투력'(index 2)와 '전략전술'(index 6)만 반 폰트 더 바깥쪽
+            let thisLabelRadius = labelRadius;
+            if (i === 2 || i === 6) thisLabelRadius = r + 0.5 * fontSizePx;
+            const x = cx + Math.cos(angle)*thisLabelRadius;
+            const y = cy + Math.sin(angle)*thisLabelRadius;
+            // 각도에 따라 정렬 동적 설정
+            if (Math.abs(Math.cos(angle)) > 0.95) {
+                ctx.textAlign = (Math.cos(angle) > 0) ? 'left' : 'right';
+                ctx.textBaseline = 'middle';
+            } else if (Math.abs(Math.sin(angle)) > 0.95) {
+                ctx.textAlign = 'center';
+                ctx.textBaseline = (Math.sin(angle) > 0) ? 'top' : 'bottom';
+            } else {
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+            }
             ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(angle)*r,cy+Math.sin(angle)*r); ctx.strokeStyle='#aaa'; ctx.lineWidth=1.2; ctx.stroke();
             ctx.fillStyle = '#444';
             ctx.fillText(labels[i], x, y);
