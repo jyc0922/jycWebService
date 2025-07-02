@@ -818,6 +818,30 @@
                 font-size: 1.5em;
             }
         }
+
+        .overlay-arrow-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            border: none;
+            font-size: 2.5em;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1001;
+            transition: background 0.2s;
+        }
+        #overlay-prev-btn { left: 30px; }
+        #overlay-next-btn { right: 30px; }
+        .overlay-arrow-btn:hover { background: rgba(255,255,255,0.3); color: #000; }
+        @media (max-width: 768px) {
+            .overlay-arrow-btn { width: 40px; height: 40px; font-size: 1.5em; }
+            #overlay-prev-btn { left: 10px; }
+            #overlay-next-btn { right: 10px; }
+        }
     </style>
 </head>
 
@@ -1050,107 +1074,70 @@
 
     <!-- 시대 흐름 내용을 오버레이로 변경 -->
     <div id="time-flow-overlay" class="time-flow-overlay">
-        <!-- ① 추가: 닫기(X) 버튼 -->
+        <button id="overlay-prev-btn" class="overlay-arrow-btn" aria-label="이전">&#8592;</button>
         <button id="overlay-close-btn" class="overlay-close-btn" aria-label="닫기">×</button>
+        <button id="overlay-next-btn" class="overlay-arrow-btn" aria-label="다음">&#8594;</button>
         <div class="image-wrapper">
-            <!-- h3 태그를 제거하여 이미지에 포함된 제목을 활용 -->
             <img id="overlay-display-image" src="samgukji02.png" onerror="this.onerror=null; this.src='https://placehold.co/800x450/fff/000?text=이미지+로드+실패';" alt="확대 이미지">
         </div>
     </div>
 
 <script>
-        // 상수 정의 - 상단에 모아서 관리
-        const SELECTORS = {
-            ASIDE_CONTAINER: 'aside',
-            TIME_FLOW_OVERLAY: '#time-flow-overlay',
-            OVERLAY_DISPLAY_IMAGE: '#overlay-display-image',
-            OVERLAY_CLOSE_BTN: '#overlay-close-btn',
-            TOGGLE_BTN: 'button.toggle-btn'
-        };
+(function() {
+    let currentList = [];
+    let currentIdx = 0;
+    const aside = document.querySelector('aside');
+    const overlay = document.getElementById('time-flow-overlay');
+    const img = document.getElementById('overlay-display-image');
+    const prevBtn = document.getElementById('overlay-prev-btn');
+    const nextBtn = document.getElementById('overlay-next-btn');
+    const closeBtn = document.getElementById('overlay-close-btn');
 
-        const CLASSES = {
-            ACTIVE: 'active'
-        };
+    function show(idx) {
+        if (!currentList.length) return;
+        img.src = currentList[idx].src;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 
-        const KEYS = {
-            ESCAPE: 'Escape'
-        };
+    function hideOverlay() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 
-        // DOM 요소들
-        const elements = {
-            asideContainer: null,
-            timeFlowOverlay: null,
-            overlayDisplayImage: null,
-            closeBtn: null
-        };
-
-        // 초기화 함수
-        function initializeElements() {
-            elements.asideContainer = document.querySelector(SELECTORS.ASIDE_CONTAINER);
-            elements.timeFlowOverlay = document.getElementById('time-flow-overlay');
-            elements.overlayDisplayImage = document.getElementById('overlay-display-image');
-            elements.closeBtn = document.getElementById('overlay-close-btn');
+    aside.addEventListener('click', function(e) {
+        const btn = e.target.closest('button.toggle-btn');
+        if (!btn) return;
+        const fieldset = btn.closest('fieldset');
+        const btns = Array.from(fieldset.querySelectorAll('button.toggle-btn'));
+        currentList = btns.map(b => ({ src: b.dataset.imageSrc }));
+        currentIdx = btns.indexOf(btn);
+        show(currentIdx);
+    });
+    prevBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        currentIdx = (currentIdx - 1 + currentList.length) % currentList.length;
+        show(currentIdx);
+    });
+    nextBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        currentIdx = (currentIdx + 1) % currentList.length;
+        show(currentIdx);
+    });
+    closeBtn.addEventListener('click', function() {
+        hideOverlay();
+    });
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+            hideOverlay();
         }
-
-        // 공통 닫기 함수
-        function hideOverlay() {
-            elements.timeFlowOverlay.classList.remove(CLASSES.ACTIVE);
-            document.body.style.overflow = '';
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            hideOverlay();
         }
-
-        // 오버레이 표시 함수
-        function showOverlay(imageSrc) {
-            elements.overlayDisplayImage.src = imageSrc;
-            elements.timeFlowOverlay.classList.add(CLASSES.ACTIVE);
-            document.body.style.overflow = 'hidden';
-            elements.timeFlowOverlay.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-
-        // 이벤트 핸들러들
-        function handleOverlayBackgroundClick(e) {
-            if (e.target === elements.timeFlowOverlay) {
-                hideOverlay();
-            }
-        }
-
-        function handleKeyDown(e) {
-            if (e.key === KEYS.ESCAPE && elements.timeFlowOverlay.classList.contains(CLASSES.ACTIVE)) {
-                hideOverlay();
-            }
-        }
-
-        function handleAsideContainerClick(event) {
-            const btn = event.target.closest(SELECTORS.TOGGLE_BTN);
-            if (!btn) return;
-
-            const src = btn.dataset.imageSrc;
-            if (!src) return;
-
-            // 같은 이미지가 이미 열려있으면 닫기, 아니면 열기
-            if (elements.timeFlowOverlay.classList.contains(CLASSES.ACTIVE) &&
-                elements.overlayDisplayImage.src.includes(src)) {
-                hideOverlay();
-            } else {
-                showOverlay(src);
-            }
-        }
-
-        // 이벤트 리스너 등록
-        function addEventListeners() {
-            elements.timeFlowOverlay.addEventListener('click', handleOverlayBackgroundClick);
-            elements.closeBtn.addEventListener('click', hideOverlay);
-            document.addEventListener('keydown', handleKeyDown);
-            elements.asideContainer.addEventListener('click', handleAsideContainerClick);
-        }
-
-        // 메인 초기화 함수
-        function initialize() {
-            initializeElements();
-            addEventListeners();
-        }
-
-        // DOM 로드 완료 시 초기화
-        document.addEventListener('DOMContentLoaded', initialize);
+    });
+})();
 </script>
 </body>
 </html>

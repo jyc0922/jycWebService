@@ -1,275 +1,448 @@
-<html>
-    <head>
-        <title>적벽대전</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                line-height: 1.6;
-                margin: 20px;
-                background-image: url('https://50plus.or.kr/upload/im/2017/11/1877b54d-45f8-4e2e-b522-3f68be69dbdc.jpg');
-                background-size: cover;
-            }
-
-            p {
-                font-size: 18px;
-                color: #333;                
-            }
-
-            .tab-container {
-                max-width: 800px;
-                margin: 20px auto 20px;
-            }
-
-            input[type="radio"] {
-                display: none;
-            }
-
-            label {
-                display: inline-block;
-                padding: 12px 20px;
-                background-color: lightgray;
-                margin-right: 5px;
-                cursor: pointer;
-                border-radius: 8px 8px 0 0;
-                transition: background 0.3s;
-            }
-
-            input[type="radio"]:checked + label {
-                background-color:goldenrod;
-                color: white;        
-            }
-
-            .content {
-                display: none;
-                padding: 20px;
-                border-radius: 0 18px 18px 18px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-                margin-top: -5px;
-            }
-
-      /* 각각의 탭이 체크됐을 때 해당 content 보여주기 */
-                #tab1:checked ~ #content1,
-                #tab2:checked ~ #content2,
-                #tab3:checked ~ #content3,
-                #tab4:checked ~ #content4,
-                #tab5:checked ~ #content5,
-                #tab6:checked ~ #content6 
-            {display: block;}
-
-            table{
-                width: 50%;
-                margin: 10px auto 10px;
-                border-collapse: collapse;
-            }
-
-            th,td{
-                padding: 10px;
-                border: 1px solid goldenrod;
-                text-align: center;
-            }
-
-            th{
-                background-color:gold;
-            }
-            td{
-            }
-
-            tr:nth-child(even){
-                background-color:lightyellow;
-            }
-            tr:nth-child(odd){
-                background-color:lightgoldenrodyellow;
-            }
-
-
-            
-        </style>
-        
-    <body>
-      <div style="text-align: center;">
-        <h1>적벽대전</h1>
-        <h2 style="color: dimgray;">적벽대전은 삼국지의 중요한 전투 중 하나로,
-             <span style="color: red;">조조</span>와 <span style="color: green;">손권</span>, 
-             <span style="color: orange;">유비</span> 연합군 간의 대결을 다룹니다.</h2>
-        <img src="https://k-static.appmobile.cn/uploads/ext/a/t01761f5b98312e89c7.jpg" alt="적벽대전" width="400">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>적벽대전 - 삼국지 대서사시</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --header-height: 80px;
+      --footer-height: 60px;
+      --gap-desktop: 20px;
+      --gap-mobile: 15px;
+      --primary-bg-color: rgba(245, 241, 230, 0.95);
+      --secondary-bg-color: rgba(250, 248, 240, 0.9);
+      --content-bg-color: rgba(252, 250, 245, 0.95);
+      --article-bg-color: rgba(248, 244, 235, 0.9);
+      --text-color: #2c2c2c;
+      --link-color: #8B4513;
+      --link-hover-color: #A0522D;
+      --border-color: #D2B48C;
+      --shadow-color: rgba(139, 69, 19, 0.2);
+      --tab-label-bg: #F5F5DC;
+      --tab-label-active-bg: #8B4513;
+      --tab-label-color: #5D4037;
+      --tab-label-active-color: #F5F5DC;
+      --table-border-color: #D2B48C;
+      --table-header-bg: linear-gradient(135deg, #8B4513, #A0522D);
+      --table-header-color: #F5F5DC;
+      --table-row-even-bg: rgba(245, 241, 230, 0.6);
+      --table-row-odd-bg: rgba(250, 248, 240, 0.8);
+      --table-row-hover-bg: rgba(210, 180, 140, 0.3);
+      --box-bg-color: rgba(245, 241, 230, 0.9);
+      --box-border-color: #D2B48C;
+      --footer-text-color: #5D4037;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url(https://i.pinimg.com/736x/c8/1e/35/c81e357bd8a4004f19c8493c60ff529a.jpg) no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-color);
+    }
+    .epic-header {
+      background: var(--primary-bg-color);
+      text-align: center;
+      padding: 48px 20px 24px 20px;
+      color: var(--link-color);
+      letter-spacing: 2px;
+      box-shadow: 0 8px 32px var(--shadow-color);
+      border-bottom: 2px solid var(--border-color);
+      border-radius: 0 0 18px 18px;
+    }
+    .epic-header h1 {
+      font-size: 2.5em;
+      margin: 0 0 10px 0;
+      letter-spacing: 0.1em;
+      text-shadow: 2px 2px 4px var(--shadow-color);
+      font-family: inherit;
+    }
+    .epic-header h2 {
+      font-size: 1.2em;
+      color: #6d4c1b;
+      margin-bottom: 18px;
+      text-shadow: 0 2px 8px #f5f1e6;
+      font-family: inherit;
+    }
+    .main-visual {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px var(--shadow-color);
+      margin: 0 auto 24px auto;
+      display: block;
+    }
+    .tab-container {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 30px 0 0 0;
+      flex-wrap: wrap;
+      background: var(--primary-bg-color);
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 2px 5px var(--shadow-color);
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .tab-btn {
+      font-size: 1.1em;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 8px 8px 0 0;
+      background: var(--tab-label-bg);
+      color: var(--tab-label-color);
+      margin-right: 2px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px var(--shadow-color);
+      transition: background 0.3s, color 0.3s;
+      outline: none;
+      font-weight: bold;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--tab-label-active-bg);
+      color: var(--tab-label-active-color);
+      box-shadow: 0 4px 10px var(--shadow-color);
+    }
+    .tab-content {
+      display: none;
+      background: var(--article-bg-color);
+      border-radius: 0 0 18px 18px;
+      box-shadow: 0 4px 24px var(--shadow-color);
+      max-width: 800px;
+      margin: 0 auto 32px auto;
+      padding: 32px 28px;
+      font-size: 1.08em;
+      line-height: 1.8;
+      color: var(--text-color);
+    }
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.7s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px);}
+      to { opacity: 1; transform: none;}
+    }
+    .character-cards {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin: 40px 0 0 0;
+      flex-wrap: wrap;
+    }
+    .char-card {
+      background: linear-gradient(135deg, var(--box-bg-color), var(--secondary-bg-color));
+      border-radius: 18px;
+      box-shadow: 0 4px 24px var(--shadow-color);
+      width: 220px;
+      text-align: center;
+      padding: 18px 10px 10px 10px;
+      position: relative;
+      transition: transform 0.2s;
+      border: 2px solid var(--box-border-color);
+    }
+    .char-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 8px 32px var(--shadow-color);
+    }
+    .char-card img {
+      border-radius: 12px;
+      width: 160px;
+      height: 120px;
+      object-fit: cover;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 8px var(--shadow-color);
+    }
+    .char-card h3 {
+      margin: 0 0 6px 0;
+      font-size: 1.2em;
+      color: var(--link-color);
+      font-family: inherit;
+    }
+    .char-card .desc {
+      font-size: 0.98em;
+      color: #444;
+      opacity: 0;
+      transition: opacity 0.3s;
+      position: absolute;
+      left: 0; right: 0; bottom: 10px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 0 0 14px 14px;
+      padding: 8px 0;
+      pointer-events: none;
+    }
+    .char-card:hover .desc {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .ancient-table {
+      width: 90%;
+      margin: 40px auto 0 auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--shadow-color);
+      background: var(--content-bg-color);
+      font-size: 1.1em;
+      border: 2px solid var(--table-border-color);
+    }
+    .ancient-table caption {
+      font-size: 1.3em;
+      color: var(--link-color);
+      margin: 18px 0 8px 0;
+      letter-spacing: 0.05em;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, var(--border-color), var(--box-bg-color));
+      border-radius: 8px;
+      box-shadow: 0 2px 8px var(--shadow-color);
+      padding: 10px 0;
+    }
+    .ancient-table th, .ancient-table td {
+      padding: 14px 8px;
+      border: 1px solid var(--table-border-color);
+      text-align: center;
+      font-family: 'Georgia', 'Times New Roman', serif;
+    }
+    .ancient-table th {
+      background: var(--table-header-bg);
+      color: var(--table-header-color);
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      font-size: 1.1em;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-variant: small-caps;
+    }
+    .ancient-table td {
+      font-size: 1em;
+      font-weight: 500;
+      color: var(--text-color);
+    }
+    .ancient-table tr:nth-child(even) { background: var(--table-row-even-bg); }
+    .ancient-table tr:nth-child(odd) { background: var(--table-row-odd-bg); }
+    .ancient-table tr:hover {
+      background-color: var(--table-row-hover-bg);
+      transform: scale(1.01);
+      transition: all 0.3s ease;
+    }
+    @media (max-width: 900px) {
+      .character-cards { flex-direction: column; align-items: center; }
+      .tab-content { padding: 18px 6px; }
+    }
+    .flex-table-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 32px;
+      margin: 40px auto 0 auto;
+      width: 90%;
+      max-width: 1200px;
+    }
+    .flex-table-row .ancient-table {
+      width: 100%;
+      margin: 0;
+    }
+    .vs-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-width: 240px;
+      width: 100%;
+      max-width: 700px;
+      height: 100%;
+      min-height: 620px;
+      margin: 0 16px;
+      position: relative;
+    }
+    .vs-image {
+      width: 100%;
+      max-width: 100%;
+      height: 100%;
+      min-height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+      margin-top: 0;
+    }
+    .vs-image img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px var(--shadow-color);
+      object-fit: contain;
+      display: block;
+    }
+    .vs-text {
+      font-size: 4em;
+      font-weight: bold;
+      color: var(--link-color);
+      letter-spacing: 0.1em;
+      text-shadow: 2px 2px 8px var(--shadow-color);
+      font-family: 'Georgia', serif;
+      text-align: center;
+      margin-top: 0;
+      line-height: 1.1;
+    }
+    @media (max-width: 900px) {
+      .flex-table-row {
+        flex-direction: column;
+        gap: 24px;
+        width: 100%;
+      }
+      .flex-table-row .ancient-table {
+        width: 95%;
+        margin: 0 auto;
+      }
+      .vs-block {
+        flex-direction: column;
+        min-width: 0;
+        width: 100%;
+        max-width: 98vw;
+        height: auto;
+        margin: 16px 0;
+        justify-content: center;
+        align-items: center;
+        min-height: 0;
+      }
+      .vs-image {
+        width: 100%;
+        max-width: 100%;
+        height: 180px;
+        min-height: 120px;
+        margin-bottom: 18px;
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .vs-image img {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+      }
+      .vs-text {
+        font-size: 2.2em;
+        margin-top: 0;
+      }
+    }
+  </style>
+  <script>
+    function showTab(idx) {
+      document.querySelectorAll('.tab-btn').forEach((el, i) => {
+        el.classList.toggle('active', i === idx);
+        document.querySelectorAll('.tab-content')[i].classList.toggle('active', i === idx);
+      });
+    }
+    window.onload = function() { showTab(0); }
+  </script>
+</head>
+<body>
+  <div class="epic-header">
+    <h1>적벽대전</h1>
+    <h2>삼국지의 불타는 강, <span style="color:#ffb300;">조조</span> vs <span style="color:#1eae98;">손권</span> & <span style="color:#e67e22;">유비</span> 연합군의 운명을 건 대결</h2>
+    <img class="main-visual" src="https://k-static.appmobile.cn/uploads/ext/a/t01761f5b98312e89c7.jpg" alt="적벽대전">
+  </div>
+  <div class="tab-container">
+    <button class="tab-btn" onclick="showTab(0)">개요</button>
+    <button class="tab-btn" onclick="showTab(1)">전투 장소</button>
+    <button class="tab-btn" onclick="showTab(2)">전투 일시</button>
+    <button class="tab-btn" onclick="showTab(3)">전투 양상</button>
+    <button class="tab-btn" onclick="showTab(4)">전투 결과</button>
+    <button class="tab-btn" onclick="showTab(5)">의의</button>
+  </div>
+  <div class="tab-content">
+    <h2>개요</h2>
+    <p>적벽대전은 중국 후한 말기, 삼국 시대의 전환점이 된 대규모 전투로, 조조의 위나라와 손권·유비 연합군이 장강(양쯔강) 적벽에서 맞붙은 사건입니다.</p>
+  </div>
+  <div class="tab-content">
+    <h2>전투 장소</h2>
+    <p>적벽대전은 중국의 적벽(현 양쯔강 인근)에서 벌어졌습니다. 현재의 장강(양쯔강) 근처에 위치합니다.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Chibi.jpg" alt="적벽" style="display:block;margin:20px auto 0 auto;max-width:300px;border-radius:12px;">
+  </div>
+  <div class="tab-content">
+    <h2>전투 일시</h2>
+    <p>적벽대전은 208년 겨울에 발발하여 209년 초까지 이어졌습니다.</p>
+  </div>
+  <div class="tab-content">
+    <h2>전투 양상</h2>
+    <ul>
+      <li>조조의 대군이 남하하여 오나라와 촉나라 연합군이 이를 저지하기 위해 적벽에서 대치.</li>
+      <li>연합군은 불을 이용한 전술로 조조의 함대를 크게 무찔렀음.</li>
+    </ul>
+  </div>
+  <div class="tab-content">
+    <h2>전투 결과</h2>
+    <ul>
+      <li>조조군은 크게 패배, 삼국 시대의 판도가 결정적으로 변화.</li>
+      <li>오·촉 연합군은 위나라에 맞설 기반을 마련.</li>
+    </ul>
+  </div>
+  <div class="tab-content">
+    <h2>의의</h2>
+    <ul>
+      <li>적벽대전은 삼국지의 전개에 있어 중요한 전환점이 되었음.</li>
+      <li>이후 오나라와 촉나라가 위나라에 맞서 싸울 수 있는 기반을 마련.</li>
+      <li>전략과 전술의 중요성을 보여준 대표적 사례.</li>
+    </ul>
+  </div>
+  <div class="character-cards">
+    <div class="char-card">
+      <img src="https://p9.itc.cn/images01/20231030/651ca372646b46f58d9c32dd1233ad90.jpeg" alt="조조">
+      <h3>조조</h3>
+      <div class="desc">위나라의 군주, 냉철한 전략가<br>“영웅은 시대를 만든다.”</div>
+    </div>
+    <div class="char-card">
+      <img src="https://p6.itc.cn/q_70/images03/20221101/740bbac03d324bf68f6cddb5bb732ce0.jpeg" alt="유비">
+      <h3>유비</h3>
+      <div class="desc">촉나라의 군주, 인의의 상징<br>“백성은 나의 근본이다.”</div>
+    </div>
+    <div class="char-card">
+      <img src="https://img.huxiucdn.com/article/content/202310/23/090824463752.jpg?imageView2/2/w/1000/format/jpg/interlace/1/q/85" alt="손권">
+      <h3>손권</h3>
+      <div class="desc">오나라의 군주, 결단의 리더<br>“강동의 용, 손씨 가문.”</div>
+    </div>
+  </div>
+  <div class="flex-table-row">
+    <table class="ancient-table">
+      <caption>조조진영</caption>
+      <tr>
+        <th>인물</th>
+        <th>나이</th>
+        <th>출생연도</th>
+      </tr>
+      <tr><td>조조</td><td>53세</td><td>155</td></tr>
+      <tr><td>순욱</td><td>45세</td><td>163</td></tr>
+      <tr><td>가후</td><td>61세</td><td>147</td></tr>
+      <tr><td>조인</td><td>40세</td><td>168</td></tr>
+      <tr><td>장료</td><td>39세</td><td>169</td></tr>
+      <tr><td>정욱</td><td>67세</td><td>141</td></tr>
+    </table>
+    <div class="vs-block">
+      <div class="vs-image">
+        <img src="redcliff/samgukji_chibi.jpg" alt="VS">
       </div>
-
-      <div class="tab-container">
-        <input type="radio" id="tab1" name="tab" checked />
-        <label for="tab1">개요</label>
-
-        <input type="radio" id="tab2" name="tab" checked />
-        <label for="tab2">전투 장소</label>
-
-        <input type="radio" id="tab3" name="tab" checked />
-        <label for="tab3">전투 일시</label>
-
-        <input type="radio" id="tab4" name="tab" checked />
-        <label for="tab4">전투 양상</label>
-
-        <input type="radio" id="tab5" name="tab" checked />
-        <label for="tab5">전투 결과</label>
-
-        <input type="radio" id="tab6" name="tab" checked />
-        <label for="tab6">중요성</label>
-
-        <div class="content" id="content1">
-        <h2>개요</h2>
-        <p>적벽대전은 중국 후한 말기, 삼국 시대의 중요한 전투로, 조조의 위나라와 손권의 오나라, 유비의 촉나라 연합군 간의 전투입니다.</p>
-        </div>
-
-        <div class="content" id="content2">
-        <h2>전투 장소</h2>
-        <p>적벽대전은 중국의 적벽에서 벌어졌습니다. 이곳은 현재의 장강(양쯔강) 근처에 위치하고 있습니다.</p>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Chibi.jpg" alt="적벽대전" width="200" style="display: block; margin-left: auto; margin-right: auto;">
-        </div>
-
-        <div class="content" id="content3">
-        <h2>전투 일시</h2>
-        <p>적벽대전은 208년에서 209년 사이에 발생하였습니다.</p>
-        </div>  
-        
-        <div class="content" id="content4">
-        <h2>전투 양상</h2>
-        <p>
-            <ul>
-                <li>조조의 대군이 남하하면서 오나라와 촉나라 연합군이 이를 저지하기 위해 적벽에서 대치하였습니다. </li>
-                <li>연합군은 불을 이용한 전략으로 조조의 함대를 크게 무찌르며 승리하였습니다.</li>
-            </ul>
-        </p>
-        </div> 
-
-        <div class="content" id="content5">
-        <h2>전투 결과</h2>
-        <p>
-            <ul>
-                <li>적벽대전의 결과, 조조의 군대는 크게 패배하였고, 이는 삼국 시대의 판도를 크게 변화시켰습니다.</li>
-                <li>오나라와 촉나라는 연합하여 위나라에 맞서 싸울 수 있는 기반을 마련하였습니다.</li>
-            </ul>
-        </p>
-        </div> 
-
-        <div class="content" id="content6">
-        <h2>전투 일시</h2>
-        <p>
-            <ul>
-                <li>적벽대전은 삼국지의 전개에 있어 중요한 전환점이 되었습니다.</li>
-                <li>이후 오나라와 촉나라가 위나라에 맞서 싸울 수 있는 기반을 마련하였습니다.</li>
-                <li>이 전투는 또한 전략과 전술의 중요성을 강조하는 사례로 남아 있습니다.</li>
-            </ul>
-        </p>        
-        </div>              
-       
-      </div>
-
-      <div style="text-align: center;">
-        <h2>주요 인물</h2>
-        <ul style="list-style: none; padding: 0; display: flex; justify-content: space-around;">
-
-        <li style="display: flex; flex-direction: column; align-items: center;">
-            <h3><span style="color: red;">조조:</span> 위나라의 군주</h3>
-            <img src="https://p9.itc.cn/images01/20231030/651ca372646b46f58d9c32dd1233ad90.jpeg" alt="조조" width="200" height="150">
-        </li>
-        <li style="display: flex; flex-direction: column; align-items: center;">
-            <h3><span style="color: orange;">유비:</span> 촉나라의 군주</h3>
-            <img src="https://p6.itc.cn/q_70/images03/20221101/740bbac03d324bf68f6cddb5bb732ce0.jpeg" alt="유비" width="200" height="150">
-        </li>
-        <li style="display: flex; flex-direction: column; align-items: center;">
-            <h3><span style="color: green;">손권:</span> 오나라의 군주</h3>
-            <img src="https://img.huxiucdn.com/article/content/202310/23/090824463752.jpg?imageView2/2/w/1000/format/jpg/interlace/1/q/85" alt="손권" width="200" height="150">
-        </li>
-
-        </ul>
-      </div>
-
-        <h1 style="text-align: center;">적벽대전시 주요 인물의 나이</h1>
-        
-        <table>
-            <caption style="font-size: 32px; margin: 10px auto 10px;">조조진영</caption>
-            <tr>
-                <th>인물</th>
-                <th>나이</th>
-                <th>출생연도</th>
-            </tr>
-            <tr>
-                <td>조조</td>
-                <td>53세</td>
-                <td>155</td>
-            </tr>
-            <tr>
-                <td>순욱</td>
-                <td>45세</td>
-                <td>163</td>
-            <tr>
-                <td>가후</td>
-                <td>61세</td>
-                <td>147</td>
-            </tr>
-            <tr>
-                <td>조인</td>
-                <td>40세</td>
-                <td>168</td>
-            </tr>
-            <tr>
-                <td>장료</td>
-                <td>39세</td>
-                <td>169</td>
-            </tr>
-            <tr>
-                <td>정욱</td>
-                <td>67세</td>
-                <td>141</td>
-            </tr>
-            </table>
-            <br><br>
-            <table>
-            <caption style="font-size: 32px; margin: 10px auto 10px;">유비/손권진영</caption>
-            <tr>
-                <th>인물</th>
-                <th>나이</th>
-                <th>출생연도</th>
-            </tr>
-            <tr>
-                <td>유비</td>
-                <td>47세</td>
-                <td>161</td>
-            </tr>
-            <tr>
-                <td>관우</td>
-                <td>47세</td>
-                <td>161(추정)</td>
-            </tr>
-            <tr>
-                <td>장비</td>
-                <td>46세</td>
-                <td>162(추정)</td>
-            </tr>
-            <tr>
-                <td>조운</td>
-                <td>40세</td>
-                <td>168(추정)</td>
-            </tr>
-            <tr>
-                <td>제갈량</td>
-                <td>27세</td>
-                <td>181</td>
-            </tr>
-            <tr>
-                <td>손권</td>
-                <td>26세</td>
-                <td>182</td>
-            </tr>
-            <tr>
-                <td>주유</td>
-                <td>33세</td>
-                <td>175</td>
-            </tr>
-            <tr>
-                <td>노숙</td>
-                <td>36세</td>
-                <td>172</td>
-            </tr>
-            </table>
-        
-    </body>
+      <div class="vs-text">V.S</div>
+    </div>
+    <table class="ancient-table">
+      <caption>유비/손권진영</caption>
+      <tr>
+        <th>인물</th>
+        <th>나이</th>
+        <th>출생연도</th>
+      </tr>
+      <tr><td>유비</td><td>47세</td><td>161</td></tr>
+      <tr><td>관우</td><td>47세</td><td>161(추정)</td></tr>
+      <tr><td>장비</td><td>46세</td><td>162(추정)</td></tr>
+      <tr><td>제갈량</td><td>27세</td><td>181</td></tr>
+      <tr><td>손권</td><td>26세</td><td>182</td></tr>
+      <tr><td>주유</td><td>33세</td><td>175</td></tr>
+    </table>
+  </div>
+</body>
 </html>
