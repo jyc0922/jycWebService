@@ -3,34 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>삼국지 정사 vs. 연의 비교</title>
+    <title>삼국지 인물론</title>
     <style>
-        /* character.html에서 가져온 스타일 (상단 일부만, 필요시 추가) */
+        /* CSS Variables for consistent styling and easy modification */
         :root {
             --header-height: 80px;
             --footer-height: 60px;
             --gap-desktop: 20px;
             --gap-mobile: 15px;
             --sidebar-width-desktop: 25%;
-            --primary-bg-color: rgba(245, 241, 230, 0.95);
-            --secondary-bg-color: rgba(250, 248, 240, 0.9);
-            --content-bg-color: rgba(252, 250, 245, 0.95);
-            --article-bg-color: rgba(248, 244, 235, 0.9);
-            --text-color: #2c2c2c;
-            --link-color: #8B4513;
-            --link-hover-color: #A0522D;
-            --border-color: #D2B48C;
-            --shadow-color: rgba(139, 69, 19, 0.2);
+            
+            /* 양피지 느낌의 색상 팔레트 */
+            --primary-bg-color: rgba(245, 241, 230, 0.95); /* 양피지 베이스 */
+            --secondary-bg-color: rgba(250, 248, 240, 0.9); /* 밝은 양피지 */
+            --content-bg-color: rgba(252, 250, 245, 0.95); /* 매우 밝은 양피지 */
+            --article-bg-color: rgba(248, 244, 235, 0.9); /* 중간 양피지 */
+            
+            /* 텍스트 색상 */
+            --text-color: #2c2c2c; /* 진한 회색 */
+            --link-color: #8B4513; /* 갈색 링크 */
+            --link-hover-color: #A0522D; /* 호버 시 더 진한 갈색 */
+            
+            /* 테두리 및 그림자 */
+            --border-color: #D2B48C; /* 탄 베이지 */
+            --shadow-color: rgba(139, 69, 19, 0.2); /* 갈색 그림자 */
+            
+            /* 탭 스타일 */
+            --tab-label-bg: #F5F5DC; /* 베이지 */
+            --tab-label-active-bg: #8B4513; /* 갈색 */
+            --tab-label-color: #5D4037; /* 진한 갈색 */
+            --tab-label-active-color: #F5F5DC; /* 베이지 */
+            
+            /* 테이블 스타일 - 세련된 디자인 */
+            --table-border-color: #D2B48C; /* 탄 베이지 */
+            --table-header-bg: linear-gradient(135deg, #8B4513, #A0522D); /* 갈색 그라데이션 */
+            --table-header-color: #F5F5DC; /* 베이지 텍스트 */
+            --table-row-even-bg: rgba(245, 241, 230, 0.6); /* 밝은 양피지 */
+            --table-row-odd-bg: rgba(250, 248, 240, 0.8); /* 더 밝은 양피지 */
+            --table-row-hover-bg: rgba(210, 180, 140, 0.3); /* 호버 시 탄 베이지 */
+            
+            /* 박스 스타일 */
+            --box-bg-color: rgba(245, 241, 230, 0.9); /* 양피지 */
+            --box-border-color: #D2B48C; /* 탄 베이지 */
+            
+            /* 푸터 텍스트 */
+            --footer-text-color: #5D4037; /* 진한 갈색 */
         }
+
         body {
             display: grid;
             background: url(https://i.pinimg.com/736x/c8/1e/35/c81e357bd8a4004f19c8493c60ff529a.jpg) no-repeat center center fixed;
             background-size: cover;
             margin: 0;
-            min-height: 100vh;
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh; /* Ensure body takes full viewport height */
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Prefer Inter if available, fallback to Segoe UI */
             color: var(--text-color);
-            overflow-x: hidden;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+
+            /* Desktop layout using CSS Grid */
             grid-template-columns: var(--sidebar-width-desktop) 1fr;
             grid-template-rows: var(--header-height) auto 1fr var(--footer-height);
             grid-template-areas:
@@ -38,60 +68,149 @@
                 "nav nav"
                 "aside main"
                 "footer footer";
-            gap: var(--gap-desktop);
+            gap: var(--gap-desktop); /* Gap between grid items */
         }
+
+        /* Header styling */
         header {
             grid-area: header;
             background-color: var(--primary-bg-color);
             text-align: center;
-            font-size: 2.5em;
+            font-size: 2.5em; /* Responsive font size for larger screens */
             line-height: var(--header-height);
             color: var(--link-color);
             text-shadow: 2px 2px 4px var(--shadow-color);
             border-bottom: 2px solid var(--border-color);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 0 0 15px 15px;
+            border-radius: 0 0 15px 15px; /* Rounded bottom corners */
         }
-        header h1 { margin: 0; font-size: 1em; }
+
+        header h1 {
+            margin: 0; /* Remove default margin for h1 */
+            font-size: 1em; /* Make h1 inherit parent's font-size set above */
+        }
+
+        /* Footer styling */
+        footer {
+            grid-area: footer;
+            background-color: var(--primary-bg-color);
+            font-size: 0.9em;
+            text-align: center;
+            line-height: var(--footer-height);
+            color: var(--footer-text-color); /* Darker text color */
+            padding: 0 10px;
+            border-top: 2px solid var(--border-color);
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 15px 15px 0 0; /* Rounded top corners */
+        }
+
+        footer a {
+            color: var(--footer-text-color); /* Darker link color */
+            text-decoration: none;
+            margin: 0 5px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--link-hover-color);
+        }
+
+        /* Navigation styling (tab container) */
         nav {
             grid-area: nav;
             background-color: var(--primary-bg-color);
             padding: 10px 20px;
             box-sizing: border-box;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            flex-wrap: wrap; /* Allow tabs to wrap on smaller screens */
+            justify-content: center; /* Center nav items */
             align-items: center;
             border-bottom: 1px solid rgba(255, 255, 0, 0.3);
-            border-radius: 10px;
-            margin: 0 var(--gap-desktop);
+            border-radius: 10px; /* Slightly rounded overall nav */
+            margin: 0 var(--gap-desktop); /* Horizontal margin to match grid gap */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        main {
-            grid-area: main;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--gap-desktop);
-            background-color: var(--content-bg-color);
+
+        .tab-container {
+            /* nav와 똑같이 동작하도록 복사 */
+            grid-area: nav;
+            background-color: var(--primary-bg-color);
+            padding: 10px 20px;
+            box-sizing: border-box;
+            display: block; /* flex 대신 카드 그리드(.nav-grid)만 감싸도록 block 처리 */
+            margin: 0 var(--gap-desktop);
+        }
+
+        /* Hide radio buttons */
+        input[type="radio"] {
+            display: none;
+        }
+
+        /* Style for tab labels (buttons) */
+        label {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: var(--tab-label-bg);
+            margin: 0 5px 10px 5px; /* Margin around labels */
+            cursor: pointer;
+            border-radius: 8px 8px 0 0; /* Rounded top corners for tabs */
+            transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+            font-weight: bold;
+            color: var(--tab-label-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            white-space: nowrap; /* Prevent tab labels from breaking lines */
+        }
+
+        label:hover {
+            background-color: #d0d0d0; /* Darker grey on hover */
+        }
+
+        /* Style for checked tab label */
+        input[type="radio"]:checked + label {
+            background-color: var(--tab-label-active-bg);
+            color: var(--tab-label-active-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* More pronounced shadow when active */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        /* Common style for tab content */
+        .content {
+            display: none; /* Hidden by default */
+            width: 100%; /* Take full width within its container */
             padding: var(--gap-desktop);
-            overflow-y: auto;
-            border-radius: 10px;
-            margin-left: var(--gap-desktop);
-            margin-right: var(--gap-desktop);
-            box-sizing: border-box;
-        }
-        main section {
-            background-color: var(--article-bg-color);
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            box-shadow: 3px 3px 8px var(--shadow-color);
-            padding: 15px;
+            border-radius: 0 18px 18px 18px; /* Rounded corners for content box */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            margin-top: 10px;
+            background-color: var(--article-bg-color); /* Consistent background */
+            color: var(--text-color);
             text-align: left;
-            margin-bottom: 0;
-            min-width: 0;
-            width: 100%;
-            box-sizing: border-box;
+            box-sizing: border-box; /* Include padding in width */
         }
+
+        .content h4 {
+            color: var(--text-color);
+            margin-top: 0;
+            font-size: 1.4em;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            line-height: 1.6;
+        }
+
+        /* Show active tab content */
+        #tab1:checked ~ #content1,
+        #tab2:checked ~ #content2,
+        #tab3:checked ~ #content3,
+        #tab4:checked ~ #content4,
+        #tab5:checked ~ #content5 {
+            display: block; /* Display the active tab content */
+        }
+
+        /* Aside (sidebar) styling */
         aside {
             grid-area: aside;
             background-color: var(--secondary-bg-color);
@@ -100,49 +219,467 @@
             overflow-y: auto;
             border-radius: 10px;
             margin-left: var(--gap-desktop);
-            margin-right: var(--gap-desktop);
             box-sizing: border-box;
+            display: grid; /* flex -> grid로 변경 */
+            grid-template-columns: 1fr 1fr; /* 2열 그리드 */
+            gap: 16px; /* 버튼 그룹 간 간격 */
+            align-items: start;
+        }
+
+        aside article {
             width: 100%;
-            min-width: 0;
+            grid-column: 1 / -1; /* article(후한의 멸망)은 2칸 전체 차지 */
         }
-        footer {
-            grid-area: footer;
-            background-color: var(--primary-bg-color);
-            font-size: 0.9em;
+
+        aside h3 {
+            color: var(--text-color);
+            margin-top: 0;
+            font-size: 1.3em;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 20px;
+            font-family: 'Georgia', serif;
+        }
+
+        /* Box styling within aside */
+        .box {
+            background: linear-gradient(135deg, var(--box-bg-color), var(--secondary-bg-color));
+            box-shadow: 0 4px 12px var(--shadow-color);
+            margin: 0; /* Removed auto margin, now flex container handles centering */
+            border-radius: 12px;
+            padding: 20px;
+            text-align: left;
+            box-sizing: border-box;
+            border: 2px solid var(--border-color);
+            width: 100%; /* Ensure box takes full width of its parent article */
+            transition: all 0.3s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px var(--shadow-color);
+        }
+
+        .box h2 {
             text-align: center;
-            line-height: var(--footer-height);
-            color: #5D4037;
-            padding: 0 10px;
-            border-top: 2px solid var(--border-color);
-            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 15px 15px 0 0;
+            color: var(--text-color);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
         }
-        footer a {
-            color: #5D4037;
-            text-decoration: none;
-            margin: 0 5px;
-            transition: color 0.3s ease;
+
+        .box ol {
+            padding-left: 25px;
+            line-height: 1.8;
+            color: var(--text-color);
         }
-        footer a:hover { color: var(--link-hover-color); }
+
+        .box ol li {
+            margin-bottom: 10px;
+            font-family: 'Georgia', serif;
+        }
+
+        /* Main content area styling */
+        main {
+            grid-area: main;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid for articles */
+            gap: var(--gap-desktop);
+            background-color: var(--content-bg-color);
+            padding: var(--gap-desktop);
+            overflow-y: auto; /* Allow scrolling for long content */
+            border-radius: 10px;
+            margin-right: var(--gap-desktop); /* Right margin to align with grid */
+            box-sizing: border-box;
+        }
+
+        /* Article styling within main content */
+        main article {
+            background-color: var(--article-bg-color);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 3px 3px 8px var(--shadow-color);
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            background-color: var(--content-bg-color);
+            box-shadow: 0 4px 15px var(--shadow-color);
+            border-radius: 12px; /* 더 둥근 모서리 */
+            overflow: hidden; /* Hide overflowing borders for rounded corners */
+            border: 2px solid var(--border-color);
+        }
+
+        caption {
+            font-size: 1.5em;
+            color: var(--text-color);
+            margin-bottom: 15px;
+            font-weight: bold;
+            padding: 15px 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--border-color), var(--box-bg-color));
+            border-radius: 8px;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 15px 18px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.4;
+        }
+
+        th {
+            background: var(--table-header-bg);
+            color: var(--table-header-color);
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            font-size: 1.1em;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-variant: small-caps;
+        }
+
+        td {
+            font-size: 1em;
+            font-weight: 500;
+            color: var(--text-color);
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        /* 특별한 셀 스타일링 */
+        td:first-child {
+            font-weight: bold;
+            color: var(--link-color);
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(210, 180, 140, 0.1));
+        }
+
+        /* 숫자 데이터 셀 */
+        td:nth-child(3),
+        td:nth-child(4),
+        td:nth-child(5) {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            color: var(--link-hover-color);
+        }
+
+        /* 특정 텍스트 스타일링 - 클래스 기반 */
+        .highlight-text {
+            font-weight: bold;
+            color: var(--link-color);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+            letter-spacing: 0.3px;
+        }
+
+        .era-text {
+            font-size: 1.1em;
+            color: #8B4513;
+            font-weight: 700;
+        }
+
+        .category-text {
+            font-weight: 600;
+            color: #A0522D;
+            font-style: italic;
+        }
+
+        .region-text {
+            font-weight: 600;
+            color: #8B4513;
+        }
+
+        .event-text {
+            font-weight: 600;
+            color: #CD853F;
+        }
+
+        .literature-text {
+            font-weight: 600;
+            color: #D2691E;
+            font-style: italic;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--table-row-even-bg);
+        }
+
+        tr:nth-child(odd) {
+            background-color: var(--table-row-odd-bg);
+        }
+
+        /* 테이블 행 호버 효과 */
+        tr:hover {
+            background-color: var(--table-row-hover-bg);
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+
+        /* New section styling for the "시대 흐름" content */
+        .time-flow-overlay { /* Changed class to denote overlay behavior */
+            position: fixed; /* Position relative to the viewport */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Dark semi-transparent background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Bring to front */
+            opacity: 0; /* Start hidden with opacity */
+            visibility: hidden; /* Start hidden with visibility */
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        /* 오버레이 내부 닫기 버튼 스타일 */
+        .overlay-close-btn {
+            position: fixed; /* 고정 위치 */
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.3);
+            font-size: 2em;
+            width: 50px;
+            height: 50px;
+            line-height: 46px;
+            text-align: center;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1002; /* 더 높은 z-index */
+            transition: all 0.3s ease;
+        }
+
+        .overlay-close-btn:hover {
+            background: rgba(255,255,255,0.2);
+            color: #000;
+            border-color: rgba(0,0,0,0.5);
+            transform: scale(1.1);
+        }
+
+        .time-flow-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .time-flow-overlay .image-wrapper {
+            background-color: rgba(0, 0, 0, 0.95); /* 거의 검은 배경 */
+            padding: 0; /* 패딩 제거 */
+            border-radius: 0; /* 모서리 둥글게 제거 */
+            box-shadow: none; /* 그림자 제거 */
+            max-width: 100%; /* 전체 화면 너비 */
+            max-height: 100%; /* 전체 화면 높이 */
+            width: 100vw; /* 뷰포트 전체 너비 */
+            height: 100vh; /* 뷰포트 전체 높이 */
+            overflow: hidden; /* 스크롤 제거 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .time-flow-overlay h3 {
+            font-size: 1.8em;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .time-flow-overlay img {
+            max-width: 100vw; /* 뷰포트 전체 너비 */
+            max-height: 100vh; /* 뷰포트 전체 높이 */
+            width: auto; /* 자동 너비 */
+            height: auto; /* 자동 높이 */
+            border-radius: 0; /* 모서리 둥글게 제거 */
+            box-shadow: none; /* 그림자 제거 */
+            display: block;
+            margin: 0 auto;
+            object-fit: contain; /* 비율 유지하면서 맞춤 */
+        }
+
+        /*  버튼 그룹(범주) 스타일         */
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;  /* 좌우 균형 배치 */
+            gap: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 8px;
+            padding: 16px 14px;
+            background: linear-gradient(135deg, var(--box-bg-color), var(--secondary-bg-color));
+            box-shadow: 0 4px 12px var(--shadow-color);
+        }
+        
+        .btn-group legend {
+            padding: 0 12px;
+            font-weight: 600;
+            font-family: 'Georgia', serif;
+            color: var(--text-color);
+            background: var(--content-bg-color);
+            border-radius: 6px;
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+
+        /* === ② 탭 카드를 그리드로 배치 === */
+        .nav-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .nav-item {
+            margin: 0 auto;
+        }
+
+        /* === ③ 카드 스타일 === */
+        .nav-item {
+        display: flex;
+        flex-direction: column;
+        background: var(--box-bg-color);
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 8px var(--shadow-color);
+        }
+        
+        .nav-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px var(--shadow-color);
+        }
+
+        /* === ④ 카드 내 이미지 스타일 === */
+        .nav-item img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        }
+
+        /* === ⑤ 카드 내 텍스트 스타일 === */
+        .nav-item h3 {
+        margin: 12px 0 6px;
+        color: var(--text-color);
+        font-family: 'Georgia', serif;
+        font-size: 1.1em;
+        text-align: center;
+        }
+        
+        .nav-item p {
+        margin: 0 10px 15px;
+        color: var(--text-color);
+        font-size: 0.9em;
+        text-align: center;
+        line-height: 1.4;
+        }
+
+
+        /*  버튼 기본 스타일 재정의         */
+        .toggle-btn {
+            flex: 1 1 120px;               /* 최소 120px, 균등 확장 */
+            max-width: 180px;
+            margin: 6px 4px;
+            padding: 12px 0;
+            background: linear-gradient(135deg, var(--border-color), var(--box-bg-color));
+            color: var(--text-color);
+            font-family: 'Georgia', serif;
+            font-size: 0.95em;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-btn:hover {
+            background: linear-gradient(135deg, var(--link-hover-color), var(--border-color));
+            color: var(--tab-label-active-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px var(--shadow-color);
+        }
+
+        /* Responsive Design Media Queries */
+
+        /* Tablet and smaller desktops */
         @media (max-width: 1024px) {
-            body { gap: var(--gap-mobile); grid-template-columns: 30% 1fr; }
-            header { font-size: 2.2em; }
-            nav { margin: 0 var(--gap-mobile); }
-            aside { grid-template-columns: 1fr; }
-            aside {
-                margin-right: var(--gap-mobile);
+            body {
+                gap: var(--gap-mobile);
+                /* Adjust sidebar width slightly */
+                grid-template-columns: 30% 1fr;
             }
+
+            header {
+                font-size: 2.2em;
+            }
+
+            nav {
+                margin: 0 var(--gap-mobile);
+            }
+
+            aside {
+                grid-template-columns: 1fr; /* 태블릿 이하에서는 다시 1열 */
+            }
+
+            aside article {
+                grid-column: auto;
+            }
+
             main {
-                margin-left: var(--gap-mobile);
                 margin-right: var(--gap-mobile);
                 padding: var(--gap-mobile);
-                grid-template-columns: 1fr 1fr;
+            }
+
+            label {
+                padding: 10px 15px;
+                font-size: 0.95em;
+                margin: 0 4px 8px 4px;
+            }
+
+            .content {
+                padding: var(--gap-mobile);
+            }
+
+            .time-flow-overlay .image-wrapper {
+                padding: var(--gap-mobile);
             }
         }
+
+
+        /* Mobile devices */
         @media (max-width: 768px) {
             body {
-                grid-template-columns: 1fr;
-                grid-template-rows: var(--header-height) auto auto 1fr var(--footer-height);
+                grid-template-columns: 1fr; /* Single column layout */
+                grid-template-rows: var(--header-height) auto auto 1fr var(--footer-height); /* Nav, aside, main stack */
                 grid-template-areas:
                     "header"
                     "nav"
@@ -151,155 +688,1700 @@
                     "footer";
                 gap: var(--gap-mobile);
             }
-            header { font-size: 1.8em; line-height: normal; padding: 10px; border-radius: 0; }
-            footer { border-radius: 0; }
-            nav { flex-direction: column; align-items: stretch; padding: 10px; margin: 0; border-radius: 0; }
-            aside, main { padding: var(--gap-mobile); margin: 0 0 var(--gap-mobile) 0; border-radius: 0; }
+
+            header {
+                font-size: 1.8em; /* Smaller font size for header */
+                line-height: normal; /* Allow height to adjust based on padding */
+                padding: 10px;
+                border-radius: 0; /* Remove rounded corners on smaller screens */
+            }
+
+            footer {
+                border-radius: 0; /* Remove rounded corners on smaller screens */
+            }
+
+            nav {
+                flex-direction: column; /* Stack nav labels vertically */
+                align-items: stretch; /* Stretch labels to full width */
+                padding: 10px;
+                margin: 0; /* Remove horizontal margin */
+                border-radius: 0;
+            }
+
+            label {
+                margin: 5px 0; /* Vertical margin for stacked labels */
+                border-radius: 8px; /* Full rounded corners for stacked labels */
+                text-align: center;
+                width: 100%; /* Make label take full width */
+            }
+
+            aside, main {
+                padding: var(--gap-mobile);
+                margin: 0; /* Remove side margins */
+                border-radius: 0; /* Remove rounded corners */
+            }
+
             main {
-                grid-template-columns: 1fr;
-                gap: var(--gap-mobile);
-                margin-left: 0;
+                grid-template-columns: 1fr; /* Stack articles vertically */
             }
-            main nav {
-                grid-column: 1 / span 1;
+
+            caption {
+                font-size: 1.2em;
+            }
+
+            th, td {
+                padding: 8px 10px; /* Smaller padding for table cells */
+                font-size: 0.85em;
+            }
+
+            /* Adjust background for smaller screens to ensure visibility */
+            body {
+                background-size: auto 100%; /* Cover height, auto width */
+                background-position: top center;
+            }
+
+            .time-flow-overlay .image-wrapper {
+                max-width: 100vw;
+                max-height: 100vh;
+                width: 100vw;
+                height: 100vh;
+                padding: 0;
+            }
+            
+            .time-flow-overlay img {
+                max-width: 100vw;
+                max-height: 100vh;
+            }
+
+            .overlay-close-btn {
+                top: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                line-height: 41px;
+                font-size: 1.8em;
+            }
+
+            .toggle-btn {
+                padding: 8px 12px;
+                font-size: 0.9em;
             }
         }
+
         @media (max-width: 480px) {
-            header { font-size: 1.4em; padding: 8px; }
-            main section { padding: 10px; min-width: 0; }
+            header {
+                font-size: 1.4em;
+                padding: 8px;
+            }
+
+            .content {
+                padding: 10px;
+            }
+
+            .box {
+                margin: 8px auto;
+                padding: 10px;
+            }
+
+            .box h2 {
+                font-size: 1.1em;
+            }
+
+            table {
+                font-size: 0.8em;
+            }
+
+            th, td {
+                padding: 6px 8px;
+            }
+
+            .time-flow-overlay h3 {
+                font-size: 1.3em;
+            }
+
+            .time-flow-overlay .image-wrapper {
+                max-width: 100vw;
+                max-height: 100vh;
+                width: 100vw;
+                height: 100vh;
+                padding: 0;
+            }
+            
+            .time-flow-overlay img {
+                max-width: 100vw;
+                max-height: 100vh;
+            }
+
+            .overlay-close-btn {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                line-height: 36px;
+                font-size: 1.5em;
+            }
         }
-        /* CSS for row-container and row-full */
-        .row-grid {
+
+        .overlay-arrow-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            border: none;
+            font-size: 2.5em;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1001;
+            transition: background 0.2s;
+        }
+        #overlay-prev-btn { left: 30px; }
+        #overlay-next-btn { right: 30px; }
+        .overlay-arrow-btn:hover { background: rgba(255,255,255,0.3); color: #000; }
+        @media (max-width: 768px) {
+            .overlay-arrow-btn { width: 40px; height: 40px; font-size: 1.5em; }
+            #overlay-prev-btn { left: 10px; }
+            #overlay-next-btn { right: 10px; }
+        }
+
+        /* 인물 상세 모달 꾸미기 */
+        #character-detail-overlay {
+            background: rgba(30, 20, 10, 0.70);
+            backdrop-filter: blur(2.5px);
+            z-index: 1000;
+        }
+        #character-detail-overlay .image-wrapper {
+            background: linear-gradient(135deg, #f8f4eb 80%, #e2d2b6 100%);
+            border-radius: 32px;
+            box-shadow: 0 8px 40px rgba(80,60,30,0.18);
+            padding: 48px 36px 40px 36px;
+            min-width: 60vw;
+            min-height: 60vh;
+            max-width: 900px;
+            max-height: 90vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: var(--gap-desktop);
-            width: 100%;
-            margin-bottom: var(--gap-desktop);
+            justify-content: flex-start;
+            gap: 32px;
+            overflow-y: auto;
         }
-        .row-grid > * {
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            box-sizing: border-box;
+        #character-detail-name-btn {
+            font-size: 2.2em;
+            padding: 26px 70px;
+            border-radius: 20px;
+            background: linear-gradient(135deg,#6a5acd,#483d8b); /* 모든 진영에 어울리는 보라-남색 계열 */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+            font-weight: 900;
+            margin-bottom: 0;
+            margin-top: 0;
+            letter-spacing: 1.5px;
+            transition: background 0.25s, box-shadow 0.2s, transform 0.15s;
+            outline: none;
+            text-shadow: 1px 2px 8px rgba(80,60,30,0.10);
         }
-        .row-grid-item[style*="grid-area: left"] {}
-        .row-grid-item[style*="grid-area: right"] {}
-        .row-grid-item[style*="grid-area: bottom"] {
+        /* 진영별 색상 오버라이드 */
+        .character-modal-name-btn.sun { background: linear-gradient(135deg,#228B22,#6B8E23); }
+        .character-modal-name-btn.liu { background: linear-gradient(135deg,#A0522D,#D2691E); }
+        .character-modal-name-btn.etc { background: linear-gradient(135deg,#4682B4,#708090); }
+        #character-detail-alt-btns {
+            display: grid !important;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 18px 18px;
             width: 100%;
+            max-width: 700px;
+            margin-bottom: 0;
+            justify-items: center;
+            align-items: center;
+            padding: 0 0 8px 0;
         }
-        @media (max-width: 1024px) {
-            .row-grid {
-                grid-template-areas:
-                    "left"
-                    "right"
-                    "bottom";
-                grid-template-columns: 1fr;
-                grid-template-rows: auto auto auto;
-                gap: var(--gap-mobile);
+        #character-detail-alt-btns .toggle-btn {
+            font-size: 1.08em;
+            padding: 12px 0;
+            border-radius: 10px;
+            min-width: 110px;
+            background: linear-gradient(135deg,#8B4513,#A0522D);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.13);
+            font-weight: bold;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+            margin: 0;
+            outline: none;
+        }
+        #character-detail-alt-btns .toggle-btn:disabled {
+            background: linear-gradient(135deg,#eaff00 40%, #00ffd0 100%);
+            filter: brightness(1.08);
+            box-shadow: 0 4px 16px rgba(139,69,19,0.18), 0 0 0 4px #7c3aed, 0 0 16px 4px #b39ddb;
+            font-weight: 900;
+            transform: scale(1.16);
+            border: 3.5px solid #7c3aed;
+            outline: 0;
+            color: #e53935;
+            z-index: 2;
+            font-size: 1.25em;
+            padding: 18px 0;
+            border-radius: 16px;
+            letter-spacing: 1.5px;
+        }
+        #character-detail-graph {
+            width: 60vw !important;
+            height: 60vh !important;
+            min-width: 520px !important;
+            min-height: 420px !important;
+            max-width: 800px;
+            max-height: 600px;
+            background: linear-gradient(135deg,#f8f4eb 80%, #e2d2b6 100%);
+            border-radius: 24px;
+            box-shadow: 0 4px 32px rgba(80,60,30,0.13);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 1.35em;
+            margin-top: 0;
+            margin-bottom: 0;
+            border: 2.5px solid #d2b48c;
+            font-family: 'Georgia', 'Inter', serif;
+        }
+        @media (max-width: 900px) {
+            #character-detail-overlay .image-wrapper {
+                min-width: 90vw;
+                padding: 18px 2vw 18px 2vw;
+            }
+            #character-detail-graph {
+                min-width: 90vw !important;
+                width: 98vw !important;
+                height: 38vh !important;
+                min-height: 220px !important;
             }
         }
-        @media (max-width: 768px) {
-            .row-grid {
-                grid-template-areas:
-                    "left"
-                    "right"
-                    "bottom";
-                grid-template-columns: 1fr;
-                grid-template-rows: auto auto auto;
-                gap: var(--gap-mobile);
-            }
+
+        /* 인물론 모달 범주별 버튼 스타일 */
+        .category-modal-box .subcat-btn {
+            font-size: 1em;
+            padding: 10px 22px;
+            border-radius: 8px;
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            margin: 0 2px;
+            box-shadow: 0 2px 8px rgba(80,60,30,0.13);
+            transition: background 0.2s;
+        }
+        .category-modal-box:nth-child(1) .subcat-btn { /* 군주 */
+            background: linear-gradient(135deg,#A0522D,#8B4513);
+        }
+        .category-modal-box:nth-child(2) .subcat-btn { /* 장군 */
+            background: linear-gradient(135deg,#4682B4,#274472);
+        }
+        .category-modal-box:nth-child(3) .subcat-btn { /* 모사 */
+            background: linear-gradient(135deg,#7B1FA2,#512DA8);
+        }
+        .category-modal-box:nth-child(4) .subcat-btn { /* 인성 */
+            background: linear-gradient(135deg,#388E3C,#689F38);
+        }
+        #character-category-modals {
+            display: flex;
+            gap: 24px;
+            margin-top: 32px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
     </style>
 </head>
+
 <body>
     <header>
-        <h1>삼국지 정사(正史)와 연의(演義)의 비교</h1>
+        <h1>삼국지 인물론</h1>
     </header>
-    <nav>
-        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; justify-content:center;">
-            <li style="margin:0 15px;"><a href="#history_intro">삼국지 정사 소개</a></li>
-            <li style="margin:0 15px;"><a href="#novel_intro">삼국지 연의 소개</a></li>
-            <li style="margin:0 15px;"><a href="#history_books">정사 관련 도서/컨텐츠</a></li>
-            <li style="margin:0 15px;"><a href="#novel_books">연의 관련 도서/컨텐츠</a></li>
+
+    <nav class="tab-container">
+        <ul class="nav-grid">
+            <li>
+                <button class="nav-item active" data-tab="tab1">
+                    <img src="./character/samgukji_character.jpg" alt="인물론" onerror="this.onerror=null; this.src='https://placehold.co/400x300/fff/000?text=No+Image';">
+                    <h3>인물분석</h3>
+                    <p>삼국지 주요 인물들의 성격과 전략을 분석합니다.</p>
+                </button>
+            </li>
         </ul>
     </nav>
+
     <aside>
-        <section id="comparison_section" class="comparison-section">
-            <h2>정사와 연의의 비교</h2>
-            <p>
-                삼국지 정사와 연의는 같은 시대를 배경으로 하지만, 그 **목적과 서술 방식에서 큰 차이**를 보입니다.
-                정사는 **역사적 사실 기록**에, 연의는 **재미와 교훈 전달**에 중점을 둡니다.
-                이러한 차이점을 이해하고 읽는다면 삼국지의 세계를 더욱 깊이 이해할 수 있습니다.
-            </p>
-            <h3>주요 비교점:</h3>
-            <ul>
-                <li><strong>집필 목적:</strong> 정사 - 역사 기록 / 연의 - 소설적 재미 및 교훈</li>
-                <li><strong>사실성:</strong> 정사 - 사실 기반 / 연의 - 허구와 과장 가미</li>
-                <li><strong>인물 묘사:</strong> 정사 - 담담하고 간결 / 연의 - 극적이고 개성 강조</li>
-                <li><strong>대표적 차이:</strong>
-                    <ul>
-                        <li>제갈량의 신비한 능력 (연의에서 과장)</li>
-                        <li>관우의 오관참육장 (연의의 허구)</li>
-                        <li>적벽대전의 규모 및 제갈량의 역할 (연의에서 과장)</li>
-                    </ul>
-                </li>
-            </ul>
-            <p>
-                두 작품 모두 삼국시대를 이해하는 데 중요하지만, 각자의 **특징을 명확히 구분**하여 즐기는 것이 좋습니다.
-                정사를 통해 **객관적인 역사적 지식**을 얻고, 연의를 통해 **흥미로운 이야기와 영웅들의 면모**를 즐길 수 있습니다.
-            </p>
-        </section>
+        <article>
+            <h3>삼국지 인물론 소개</h3>
+            <div class="box">
+                <p>삼국지의 대표 인물들과 각 진영의 주요 인물들을 한눈에 살펴보세요.<br>각 인물 카드를 클릭하면 더 자세한 정보를 볼 수 있습니다.</p>
+            </div>
+        </article>
     </aside>
+
     <main>
-        <div class="row-grid">
-            <section id="history_section" class="row-grid-item" style="grid-area: left;">
-                <h2>삼국지 정사 (正史)</h2>
-                <p>
-                    <b>삼국지 정사</b>는 서진(西晉)의 진수(陳壽)가 편찬한 역사서로, 위(魏), 촉(蜀), 오(吳) 삼국의 역사를 기록하고 있습니다.
-                    연의와 달리 **객관적인 사실과 기록**에 기반을 두고 있으며, 인물에 대한 평가도 비교적 **담담하고 간결**합니다.
-                    역사적 고증과 사실 전달에 중점을 두었기 때문에, 삼국시대에 대한 **정확한 정보를 얻고자 할 때** 중요한 자료가 됩니다.
-                </p>
-                <h3>주요 특징:</h3>
-                <ul>
-                    <li>객관적인 역사 기록</li>
-                    <li>인물의 행적과 사건을 사실 위주로 서술</li>
-                    <li>정치, 경제, 사회 등 다양한 측면을 다룸</li>
-                    <li>진수의 사론(史論) 포함</li>
-                </ul>
-            </section>
-            <section id="novel_section" class="row-grid-item" style="grid-area: right;">
-                <h2>삼국지 연의 (演義)</h2>
-                <p>
-                    <b>삼국지 연의</b>는 원말명초(元末明初) 나관중(羅貫中)이 정사를 바탕으로 소설적 상상력을 가미하여 재창조한 **역사 소설**입니다.
-                    일반적으로 우리가 삼국지라고 하면 떠올리는 **흥미진진한 이야기와 극적인 사건들, 그리고 영웅들의 활약**이 연의에서 비롯된 경우가 많습니다.
-                    정사에 비해 인물들의 **성격과 서사가 과장되거나 미화된 부분**이 많으며, 독자들의 **흥미를 유발**하는 데 초점을 맞추었습니다.
-                </p>
-                <h3>주요 특징:</h3>
-                <ul>
-                    <li>소설적 허구와 상상력 가미</li>
-                    <li>흥미로운 스토리 전개와 극적인 연출</li>
-                    <li>인물들의 개성 강조 및 영웅 서사 부각</li>
-                    <li>'도원결의', '삼고초려' 등 유명한 일화 다수 포함</li>
-                </ul>
-            </section>
-            <nav class="row-grid-item" style="grid-area: bottom;">
-                <h3 style="margin-bottom: 10px; color: #555;">더 많은 삼국지 이야기</h3>
-                <ul>
-                    <li id="history_books"><a href="https://ko.wikipedia.org/wiki/%EC%82%BC%EA%B5%AD%EC%A7%80_(%EC%A7%84%EC%88%98)" target="_blank">정사 삼국지 위키백과</a></li>
-                    <li><a href="https://namu.wiki/w/%EC%82%BC%EA%B5%AD%EC%A7%80(%EC%A0%95%EC%82%AC)" target="_blank">정사 삼국지 나무위키</a></li>
-                    <li id="novel_books"><a href="https://ko.wikipedia.org/wiki/%EC%82%BC%EA%B5%AD%EC%A7%80%EC%97%B0%EC%9D%98" target="_blank">삼국지 연의 위키백과</a></li>
-                    <li><a href="https://namu.wiki/w/%EC%82%BC%EA%B5%AD%EC%A7%80%EC%97%B0%EC%9D%98" target="_blank">삼국지 연의 나무위키</a></li>
-                    <li><a href="https://www.youtube.com/results?search_query=%EC%82%BC%EA%B5%AD%EC%A7%80+%EC%A0%95%EC%82%AC+%EC%97%B0%EC%9D%98+%EB%B9%84%EA%B5%90" target="_blank">유튜브에서 정사/연의 비교 영상 보기</a></li>
-                </ul>
-            </nav>
-        </div>
+        <article>
+            <h2 style="display:flex; justify-content:center; text-align:center;">
+                <button id="btn-cao-faction" style="font-size:1.2em; padding:10px 24px; border-radius:8px; background:linear-gradient(135deg,#8B4513,#A0522D); color:#fff; border:none; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.15); font-weight:bold;">조조 진영</button>
+            </h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center;">
+                <div class="nav-item" style="width:220px;">
+                    <img src="./character/samgukji_caocao.jpg" alt="조조" onerror="this.onerror=null; this.src='https://placehold.co/220x150/fff/000?text=No+Image';">
+                    <h3>위나라 군주</h3>
+                    <p>조조<br>위나라의 창업자, 난세의 간웅</p>
+                </div>
+                <div class="nav-item" style="width:220px;">
+                    <img src="./character/samgukji_zhangliao.jpg" alt="장료" onerror="this.onerror=null; this.src='https://placehold.co/220x150/fff/000?text=No+Image';">
+                    <h3>위나라 장군</h3>
+                    <p>장료<br>합비대전의 영웅, 위나라의 명장</p>
+                </div>
+                <div class="nav-item" style="width:220px;">
+                    <img src="./character/samgukji_guojia.jpg" alt="곽가" onerror="this.onerror=null; this.src='https://placehold.co/220x150/fff/000?text=No+Image';">
+                    <h3>위나라 모사</h3>
+                    <p>곽가<br>조조의 책사, 지략의 귀재</p>
+                </div>
+            </div>
+        </article>
+        <article>
+            <h2 style="display:flex; justify-content:center; text-align:center;">
+                <button id="btn-sun-faction" style="font-size:1.2em; padding:10px 24px; border-radius:8px; background:linear-gradient(135deg,#228B22,#6B8E23); color:#fff; border:none; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.15); font-weight:bold;">손권 진영</button>
+            </h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center;">
+                <div class="nav-item" style="width:220px;">
+                    <img src="./character/samgukji_sunquan.jpg" alt="손권" onerror="this.onerror=null; this.src='https://placehold.co/220x150/fff/000?text=No+Image';">
+                    <h3>오나라 군주</h3>
+                    <p>손권<br>오나라의 군주, 강동의 호랑이</p>
+                </div>
+                <div class="nav-item" style="width:220px;">
+                    <img src="./character/samgukji_zhouyu.jpg" alt="주유" onerror="this.onerror=null; this.src='https://placehold.co/220x150/fff/000?text=No+Image';">
+                    <h3>오나라 장군</h3>
+                    <p>주유<br>적벽대전 지휘관, 오나라의 명장</p>
+                </div>
+                <div class="nav-item" style="width:220px;">
+                    <img src="./character/samgukji_lusu.jpg" alt="노숙" onerror="this.onerror=null; this.src='https://placehold.co/220x150/fff/000?text=No+Image';">
+                    <h3>오나라 모사</h3>
+                    <p>노숙<br>오나라의 책사, 외교의 달인</p>
+                </div>
+            </div>
+        </article>
+        <article>
+            <h2 style="display:flex; justify-content:center; text-align:center;">
+                <button id="btn-liu-faction" style="font-size:1.2em; padding:10px 24px; border-radius:8px; background:linear-gradient(135deg,#A0522D,#D2691E); color:#fff; border:none; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.15); font-weight:bold;">유비 진영</button>
+            </h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center;">
+                <div class="nav-item" style="width:220px;">
+                    <img src="./character/samgukji_liubei.jpg" alt="유비" onerror="this.onerror=null; this.src='https://placehold.co/220x150/fff/000?text=No+Image';">
+                    <h3>촉나라 군주</h3>
+                    <p>유비<br>촉한의 황제, 인의의 화신</p>
+                </div>
+                <div class="nav-item" style="width:220px;">
+                    <img src="./character/samgukji_guanyu.jpg" alt="관우" onerror="this.onerror=null; this.src='https://placehold.co/220x150/fff/000?text=No+Image';">
+                    <h3>촉나라 장군</h3>
+                    <p>관우<br>의리의 화신, 오관참육장</p>
+                </div>
+                <div class="nav-item" style="width:220px;">
+                    <img src="./character/samgukji_zhugeliang.jpg" alt="제갈량" onerror="this.onerror=null; this.src='https://placehold.co/220x150/fff/000?text=No+Image';">
+                    <h3>촉나라 모사</h3>
+                    <p>제갈량<br>촉한의 재상, 지략의 대명사</p>
+                </div>
+            </div>
+        </article>
+        <article>
+            <h2 style="display:flex; justify-content:center; text-align:center;">
+                <button id="btn-etc-faction" style="font-size:1.2em; padding:10px 24px; border-radius:8px; background:linear-gradient(135deg,#4682B4,#708090); color:#fff; border:none; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.15); font-weight:bold;">기타 진영</button>
+            </h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 32px; justify-content: center;">
+                <div class="nav-item" style="width:220px;">
+                    <img src="./character/samgukji_yuanshao.jpg" alt="원소" onerror="this.onerror=null; this.src='https://placehold.co/220x150/fff/000?text=No+Image';">
+                    <h3>기타 군주</h3>
+                    <p>원소<br>관도대전의 주역, 북방의 군웅</p>
+                </div>
+                <div class="nav-item" style="width:220px;">
+                    <img src="./character/samgukji_lvbu.jpg" alt="여포" onerror="this.onerror=null; this.src='https://placehold.co/220x150/fff/000?text=No+Image';">
+                    <h3>기타 장군</h3>
+                    <p>여포<br>삼국최고의 무장, 배신의 아이콘</p>
+                </div>
+                <div class="nav-item" style="width:220px;">
+                    <img src="./character/samgukji_chengong.jpg" alt="진궁" onerror="this.onerror=null; this.src='https://placehold.co/220x150/fff/000?text=No+Image';">
+                    <h3>기타 모사</h3>
+                    <p>진궁<br>여포의 책사, 비운의 참모</p>
+                </div>
+            </div>
+        </article>
     </main>
+
     <footer>
         저작권&copy;2025 김우성 /
         <a href="https://naver.com" target="_blank">네이버</a>
         <a href="https://chatgpt.com/" target="_blank">ChatGPT</a>
         <a href="https://gemini.google.com/" target="_blank">Gemini</a>
     </footer>
+
+    <!-- 시대 흐름 내용을 오버레이로 변경 -->
+    <div id="time-flow-overlay" class="time-flow-overlay">
+        <button id="overlay-prev-btn" class="overlay-arrow-btn" aria-label="이전">&#8592;</button>
+        <button id="overlay-close-btn" class="overlay-close-btn" aria-label="닫기">×</button>
+        <button id="overlay-next-btn" class="overlay-arrow-btn" aria-label="다음">&#8594;</button>
+        <div class="image-wrapper">
+            <img id="overlay-display-image" src="samgukji02.png" onerror="this.onerror=null; this.src='https://placehold.co/800x450/fff/000?text=이미지+로드+실패';" alt="확대 이미지">
+        </div>
+    </div>
+
+    <!-- 조조 진영 오버레이 모달 -->
+    <div id="cao-faction-overlay" class="time-flow-overlay">
+        <button id="cao-faction-overlay-close-btn" class="overlay-close-btn" aria-label="닫기">×</button>
+        <div class="image-wrapper">
+            <img src="./character/samgukji_weiguo.jpg" alt="조조 진영" style="max-width:90vw; max-height:80vh; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+            <h3 style="color:#fff; margin-top:20px;">조조 진영</h3>
+        </div>
+    </div>
+    <!-- 손권 진영 오버레이 모달 -->
+    <div id="sun-faction-overlay" class="time-flow-overlay">
+        <button id="sun-faction-overlay-close-btn" class="overlay-close-btn" aria-label="닫기">×</button>
+        <div class="image-wrapper">
+            <img src="./character/samgukji_wuguo.jpg" alt="손권 진영" style="max-width:90vw; max-height:80vh; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+            <h3 style="color:#fff; margin-top:20px;">손권 진영</h3>
+        </div>
+    </div>
+    <!-- 유비 진영 오버레이 모달 -->
+    <div id="liu-faction-overlay" class="time-flow-overlay">
+        <button id="liu-faction-overlay-close-btn" class="overlay-close-btn" aria-label="닫기">×</button>
+        <div class="image-wrapper">
+            <img src="./character/samgukji_shuguo.jpg" alt="유비 진영" style="max-width:90vw; max-height:80vh; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+            <h3 style="color:#fff; margin-top:20px;">유비 진영</h3>
+        </div>
+    </div>
+    <!-- 기타 진영 오버레이 모달 -->
+    <div id="etc-faction-overlay" class="time-flow-overlay">
+        <button id="etc-faction-overlay-close-btn" class="overlay-close-btn" aria-label="닫기">×</button>
+        <div class="image-wrapper">
+            <img src="./character/samgukji_18luzhuhou.jpg" alt="기타 진영" style="max-width:90vw; max-height:80vh; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+            <h3 style="color:#fff; margin-top:20px;">기타 진영</h3>
+        </div>
+    </div>
+    <!-- 인물 상세 오버레이 프레임 -->
+    <div id="character-detail-overlay" class="time-flow-overlay">
+        <button id="character-detail-close-btn" class="overlay-close-btn" aria-label="닫기">×</button>
+        <div class="image-wrapper">
+            <button id="character-detail-name-btn" class="character-modal-name-btn">인물명</button>
+            <div id="character-detail-alt-btns"></div>
+            <div id="character-detail-graph">
+                (여기에 능력치 그래프가 표시됩니다)
+            </div>
+        </div>
+    </div>
+<script>
+(function() {
+    let currentList = [];
+    let currentIdx = 0;
+    const aside = document.querySelector('aside');
+    const overlay = document.getElementById('time-flow-overlay');
+    const img = document.getElementById('overlay-display-image');
+    const prevBtn = document.getElementById('overlay-prev-btn');
+    const nextBtn = document.getElementById('overlay-next-btn');
+    const closeBtn = document.getElementById('overlay-close-btn');
+
+    function show(idx) {
+        if (!currentList.length) return;
+        img.src = currentList[idx].src;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function hideOverlay() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    aside.addEventListener('click', function(e) {
+        const btn = e.target.closest('button.toggle-btn');
+        if (!btn) return;
+        const fieldset = btn.closest('fieldset');
+        const btns = Array.from(fieldset.querySelectorAll('button.toggle-btn'));
+        currentList = btns.map(b => ({ src: b.dataset.imageSrc }));
+        currentIdx = btns.indexOf(btn);
+        show(currentIdx);
+    });
+    prevBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        currentIdx = (currentIdx - 1 + currentList.length) % currentList.length;
+        show(currentIdx);
+    });
+    nextBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        currentIdx = (currentIdx + 1) % currentList.length;
+        show(currentIdx);
+    });
+    closeBtn.addEventListener('click', function() {
+        hideOverlay();
+    });
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+            hideOverlay();
+        }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            hideOverlay();
+        }
+    });
+
+    // 조조 진영 오버레이
+    const btnCao = document.getElementById('btn-cao-faction');
+    const overlayCao = document.getElementById('cao-faction-overlay');
+    const closeCao = document.getElementById('cao-faction-overlay-close-btn');
+    btnCao.addEventListener('click', function() {
+        overlayCao.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+    closeCao.addEventListener('click', function() {
+        overlayCao.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    overlayCao.addEventListener('click', function(e) {
+        if (e.target === overlayCao) {
+            overlayCao.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            overlayCao.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // 손권 진영 오버레이
+    const btnSun = document.getElementById('btn-sun-faction');
+    const overlaySun = document.getElementById('sun-faction-overlay');
+    const closeSun = document.getElementById('sun-faction-overlay-close-btn');
+    btnSun.addEventListener('click', function() {
+        overlaySun.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+    closeSun.addEventListener('click', function() {
+        overlaySun.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    overlaySun.addEventListener('click', function(e) {
+        if (e.target === overlaySun) {
+            overlaySun.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // 유비 진영 오버레이
+    const btnLiu = document.getElementById('btn-liu-faction');
+    const overlayLiu = document.getElementById('liu-faction-overlay');
+    const closeLiu = document.getElementById('liu-faction-overlay-close-btn');
+    btnLiu.addEventListener('click', function() {
+        overlayLiu.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+    closeLiu.addEventListener('click', function() {
+        overlayLiu.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    overlayLiu.addEventListener('click', function(e) {
+        if (e.target === overlayLiu) {
+            overlayLiu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // 기타 진영 오버레이
+    const btnEtc = document.getElementById('btn-etc-faction');
+    const overlayEtc = document.getElementById('etc-faction-overlay');
+    const closeEtc = document.getElementById('etc-faction-overlay-close-btn');
+    btnEtc.addEventListener('click', function() {
+        overlayEtc.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+    closeEtc.addEventListener('click', function() {
+        overlayEtc.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+    overlayEtc.addEventListener('click', function(e) {
+        if (e.target === overlayEtc) {
+            overlayEtc.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // ESC 키로 닫기 (공통)
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            overlayCao.classList.remove('active');
+            overlaySun.classList.remove('active');
+            overlayLiu.classList.remove('active');
+            overlayEtc.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // === 인물 상세 오버레이에 조비, 조예 버튼 추가 ===
+    const charOverlay = document.getElementById('character-detail-overlay');
+    const charNameBtn = document.getElementById('character-detail-name-btn');
+    const charGraph = document.getElementById('character-detail-graph');
+    const charAltBtns = document.getElementById('character-detail-alt-btns');
+    let currentCharName = '';
+    const lordStats = {
+        '조조': [10, 10, 7, 10, 8, 10, 10, 5],
+        '조비': [10, 9, 5, 9, 9, 9, 9, 5],
+        '조예': [8, 8, 4, 7, 9, 8, 8, 6],
+    };
+    // nav-item(군주) 클릭 시 오버레이 표시 + 대체 버튼 생성
+    document.querySelectorAll('.nav-item').forEach(function(card) {
+        card.addEventListener('click', function(e) {
+            const h3 = card.querySelector('h3');
+            const p = card.querySelector('p');
+            let name = '';
+            if (p && p.innerHTML.includes('<br>')) {
+                name = p.innerHTML.split('<br>')[0];
+            } else if (h3) {
+                name = h3.textContent;
+            }
+            charNameBtn.textContent = name;
+            currentCharName = name;
+            // charGraph.innerHTML = '(여기에 능력치 그래프가 표시됩니다)';
+            if (charStatMap[name]) {
+                charGraph.innerHTML = '';
+                let wrapper = charGraph.querySelector('.graph-border-wrapper');
+                if (!wrapper) {
+                    wrapper = document.createElement('div');
+                    wrapper.className = 'graph-border-wrapper';
+                    charGraph.appendChild(wrapper);
+                }
+                wrapper.innerHTML = '';
+                const canvas = document.createElement('canvas');
+                canvas.width = 343; canvas.height = 343;
+                canvas.style.display = 'block';
+                canvas.style.margin = '0 auto 10px auto';
+                canvas.style.background = 'rgba(255,255,255,0.13)';
+                canvas.style.borderRadius = '16px';
+                drawRadarChart(canvas, charStatMap[name], statLabels);
+                wrapper.appendChild(canvas);
+            } else {
+                charGraph.innerHTML = '';
+                const mainBox = document.createElement('div');
+                mainBox.style.display = 'flex';
+                mainBox.style.flexDirection = 'column';
+                mainBox.style.alignItems = 'center';
+                mainBox.style.justifyContent = 'center';
+                mainBox.style.width = '100%';
+                mainBox.style.height = '100%';
+                // 상위 버튼
+                const categories = [
+                  { name: '군주', sub: ['통솔력', '결단력'] },
+                  { name: '장군', sub: ['전투력', '실행력'] },
+                  { name: '모사', sub: ['통찰력', '전략전술'] },
+                  { name: '인성', sub: ['인망', '의리'] },
+                ];
+                let selectedIdx = 0;
+                const btnRow = document.createElement('div');
+                btnRow.style.display = 'flex';
+                btnRow.style.gap = '18px';
+                btnRow.style.marginBottom = '32px';
+                const subBtnRow = document.createElement('div');
+                subBtnRow.style.display = 'flex';
+                subBtnRow.style.gap = '18px';
+                // 범주별 색상 스타일
+                const categoryBtnStyles = [
+                  // 군주
+                  {
+                    background: 'linear-gradient(135deg,#A0522D,#8B4513)',
+                    color: '#fff',
+                    border: '2.5px solid #8B4513'
+                  },
+                  // 장군
+                  {
+                    background: 'linear-gradient(135deg,#4682B4,#274472)',
+                    color: '#fff',
+                    border: '2.5px solid #274472'
+                  },
+                  // 모사
+                  {
+                    background: 'linear-gradient(135deg,#7B1FA2,#512DA8)',
+                    color: '#fff',
+                    border: '2.5px solid #512DA8'
+                  },
+                  // 인성
+                  {
+                    background: 'linear-gradient(135deg,#388E3C,#689F38)',
+                    color: '#fff',
+                    border: '2.5px solid #388E3C'
+                  }
+                ];
+                function styleBtn(btn, active, idx) {
+                  btn.style.fontSize = '1.15em';
+                  btn.style.padding = '12px 28px';
+                  btn.style.borderRadius = '10px';
+                  if (active) {
+                    const styleObj = categoryBtnStyles[idx];
+                    btn.style.background = styleObj.background;
+                    btn.style.color = styleObj.color;
+                    btn.style.border = styleObj.border;
+                  } else {
+                    btn.style.background = 'linear-gradient(135deg,#e2d2b6,#f8f4eb)';
+                    btn.style.color = '#8B4513';
+                    btn.style.border = '2.5px solid #d2b48c';
+                  }
+                  btn.style.cursor = 'pointer';
+                  btn.style.fontWeight = 'bold';
+                  btn.style.boxShadow = active ? '0 2px 8px rgba(80,60,30,0.18)' : 'none';
+                  btn.style.transition = 'all 0.2s';
+                }
+                // 상위 버튼 생성
+                categories.forEach((cat, idx) => {
+                  const btn = document.createElement('button');
+                  btn.textContent = cat.name;
+                  styleBtn(btn, idx === selectedIdx, idx);
+                  btn.addEventListener('click', () => {
+                    selectedIdx = idx;
+                    Array.from(btnRow.children).forEach((b, i) => styleBtn(b, i === selectedIdx, i));
+                    renderSubBtns();
+                  });
+                  btnRow.appendChild(btn);
+                });
+                // 하위 버튼 렌더 함수
+                function renderSubBtns() {
+                  subBtnRow.innerHTML = '';
+                  categories[selectedIdx].sub.forEach(sub => {
+                    const subBtn = document.createElement('button');
+                    subBtn.textContent = sub;
+                    // 하위 버튼도 상위 버튼과 동일한 색상으로 강조
+                    styleBtn(subBtn, true, selectedIdx);
+                    subBtn.style.fontSize = '1em';
+                    subBtn.style.padding = '10px 22px';
+                    subBtnRow.appendChild(subBtn);
+                  });
+                }
+                renderSubBtns();
+                mainBox.appendChild(btnRow);
+                mainBox.appendChild(subBtnRow);
+                charGraph.appendChild(mainBox);
+            }
+            // 진영별 이름 버튼 색상 적용
+            charNameBtn.classList.remove('sun','liu','etc');
+            if (['손권','주유','노숙'].includes(name)) {
+                charNameBtn.classList.add('sun');
+            } else if (['유비','관우','제갈량'].includes(name)) {
+                charNameBtn.classList.add('liu');
+            } else if (['원소','여포','진궁'].includes(name)) {
+                charNameBtn.classList.add('etc');
+            }
+            // 군주 박스에서 조조 클릭 시만 대체 버튼 보이기
+            if (name === '조조') {
+                charAltBtns.innerHTML = '';
+                ['조조','조비','조예'].forEach(function(nm) {
+                    const btn = document.createElement('button');
+                    btn.className = 'toggle-btn';
+                    btn.style.fontSize = '1em';
+                    btn.style.padding = '10px 24px';
+                    btn.style.borderRadius = '8px';
+                    btn.style.background = (nm === name) ? 'linear-gradient(135deg,#A0522D,#8B4513)' : 'linear-gradient(135deg,#8B4513,#A0522D)';
+                    btn.style.cursor = 'pointer';
+                    btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+                    btn.style.fontWeight = 'bold';
+                    btn.textContent = nm;
+                    if (nm === name) btn.disabled = true;
+                    btn.addEventListener('click', function(ev) {
+                        ev.stopPropagation();
+                        charNameBtn.textContent = nm;
+                        currentCharName = nm;
+                        // charGraph.innerHTML = '(여기에 능력치 그래프가 표시됩니다)';
+                        if (charStatMap[nm]) {
+                            charGraph.innerHTML = '';
+                            let wrapper = charGraph.querySelector('.graph-border-wrapper');
+                            if (!wrapper) {
+                                wrapper = document.createElement('div');
+                                wrapper.className = 'graph-border-wrapper';
+                                charGraph.appendChild(wrapper);
+                            }
+                            wrapper.innerHTML = '';
+                            const canvas = document.createElement('canvas');
+                            canvas.width = 343; canvas.height = 343;
+                            canvas.style.display = 'block';
+                            canvas.style.margin = '0 auto 10px auto';
+                            canvas.style.background = 'rgba(255,255,255,0.13)';
+                            canvas.style.borderRadius = '16px';
+                            drawRadarChart(canvas, charStatMap[nm], statLabels);
+                            wrapper.appendChild(canvas);
+                        } else {
+                            charGraph.innerHTML = '(능력치 정보 없음)';
+                        }
+                        Array.from(charAltBtns.children).forEach(b => {
+                            b.style.background = (b.textContent === nm) ? 'linear-gradient(135deg,#A0522D,#8B4513)' : 'linear-gradient(135deg,#8B4513,#A0522D)';
+                            b.disabled = (b.textContent === nm);
+                        });
+                    });
+                    charAltBtns.appendChild(btn);
+                });
+            } else if (name === '장료') {
+                charAltBtns.innerHTML = '';
+                [
+                    '장료','우금','하후연','하후돈','하후모','무구검','허저','종회','서황','조휴','조홍','조장','조진','조인','조상','장합','진군','전위','등애','방덕','만총','이전',
+                    '낙진','곽회','제갈탄','장수','모개'
+                ].forEach(function(nm) {
+                    const btn = document.createElement('button');
+                    btn.className = 'toggle-btn';
+                    btn.style.fontSize = '1em';
+                    btn.style.padding = '10px 24px';
+                    btn.style.borderRadius = '8px';
+                    btn.style.background = (nm === name) ? 'linear-gradient(135deg,#A0522D,#8B4513)' : 'linear-gradient(135deg,#8B4513,#A0522D)';
+                    btn.style.cursor = 'pointer';
+                    btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+                    btn.style.fontWeight = 'bold';
+                    btn.textContent = nm;
+                    if (nm === name) btn.disabled = true;
+                    btn.addEventListener('click', function(ev) {
+                        ev.stopPropagation();
+                        charNameBtn.textContent = nm;
+                        currentCharName = nm;
+                        // charGraph.innerHTML = '(여기에 능력치 그래프가 표시됩니다)';
+                        if (charStatMap[nm]) {
+                            charGraph.innerHTML = '';
+                            let wrapper = charGraph.querySelector('.graph-border-wrapper');
+                            if (!wrapper) {
+                                wrapper = document.createElement('div');
+                                wrapper.className = 'graph-border-wrapper';
+                                charGraph.appendChild(wrapper);
+                            }
+                            wrapper.innerHTML = '';
+                            const canvas = document.createElement('canvas');
+                            canvas.width = 343; canvas.height = 343;
+                            canvas.style.display = 'block';
+                            canvas.style.margin = '0 auto 10px auto';
+                            canvas.style.background = 'rgba(255,255,255,0.13)';
+                            canvas.style.borderRadius = '16px';
+                            drawRadarChart(canvas, charStatMap[nm], statLabels);
+                            wrapper.appendChild(canvas);
+                        } else {
+                            charGraph.innerHTML = '(능력치 정보 없음)';
+                        }
+                        Array.from(charAltBtns.children).forEach(b => {
+                            b.style.background = (b.textContent === nm) ? 'linear-gradient(135deg,#A0522D,#8B4513)' : 'linear-gradient(135deg,#8B4513,#A0522D)';
+                            b.disabled = (b.textContent === nm);
+                        });
+                    });
+                    charAltBtns.appendChild(btn);
+                });
+            } else if (name === '곽가') {
+                charAltBtns.innerHTML = '';
+                [
+                    '곽가','가후','가충','관택','허유','사마의','사마사','사마소','순욱','순유','조식','진군','진림','정욱','두예','가규','화흠'
+                ].forEach(function(nm) {
+                    const btn = document.createElement('button');
+                    btn.className = 'toggle-btn';
+                    btn.style.fontSize = '1em';
+                    btn.style.padding = '10px 24px';
+                    btn.style.borderRadius = '8px';
+                    btn.style.background = (nm === name) ? 'linear-gradient(135deg,#A0522D,#8B4513)' : 'linear-gradient(135deg,#8B4513,#A0522D)';
+                    btn.style.cursor = 'pointer';
+                    btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+                    btn.style.fontWeight = 'bold';
+                    btn.textContent = nm;
+                    if (nm === name) btn.disabled = true;
+                    btn.addEventListener('click', function(ev) {
+                        ev.stopPropagation();
+                        charNameBtn.textContent = nm;
+                        currentCharName = nm;
+                        // charGraph.innerHTML = '(여기에 능력치 그래프가 표시됩니다)';
+                        if (charStatMap[nm]) {
+                            charGraph.innerHTML = '';
+                            let wrapper = charGraph.querySelector('.graph-border-wrapper');
+                            if (!wrapper) {
+                                wrapper = document.createElement('div');
+                                wrapper.className = 'graph-border-wrapper';
+                                charGraph.appendChild(wrapper);
+                            }
+                            wrapper.innerHTML = '';
+                            const canvas = document.createElement('canvas');
+                            canvas.width = 343; canvas.height = 343;
+                            canvas.style.display = 'block';
+                            canvas.style.margin = '0 auto 10px auto';
+                            canvas.style.background = 'rgba(255,255,255,0.13)';
+                            canvas.style.borderRadius = '16px';
+                            drawRadarChart(canvas, charStatMap[nm], statLabels);
+                            wrapper.appendChild(canvas);
+                        } else {
+                            charGraph.innerHTML = '(능력치 정보 없음)';
+                        }
+                        Array.from(charAltBtns.children).forEach(b => {
+                            b.style.background = (b.textContent === nm) ? 'linear-gradient(135deg,#A0522D,#8B4513)' : 'linear-gradient(135deg,#8B4513,#A0522D)';
+                            b.disabled = (b.textContent === nm);
+                        });
+                    });
+                    charAltBtns.appendChild(btn);
+                });
+            } else if (name === '손권') {
+                charAltBtns.innerHTML = '';
+                [
+                    '손권','손책','손호','손견'
+                ].forEach(function(nm) {
+                    const btn = document.createElement('button');
+                    btn.className = 'toggle-btn';
+                    btn.style.fontSize = '1em';
+                    btn.style.padding = '10px 24px';
+                    btn.style.borderRadius = '8px';
+                    btn.style.background = (nm === name) ? 'linear-gradient(135deg,#228B22,#006400)' : 'linear-gradient(135deg,#006400,#228B22)';
+                    btn.style.cursor = 'pointer';
+                    btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+                    btn.style.fontWeight = 'bold';
+                    btn.textContent = nm;
+                    if (nm === name) btn.disabled = true;
+                    btn.addEventListener('click', function(ev) {
+                        ev.stopPropagation();
+                        charNameBtn.textContent = nm;
+                        currentCharName = nm;
+                        // charGraph.innerHTML = '(여기에 능력치 그래프가 표시됩니다)';
+                        if (charStatMap[nm]) {
+                            charGraph.innerHTML = '';
+                            let wrapper = charGraph.querySelector('.graph-border-wrapper');
+                            if (!wrapper) {
+                                wrapper = document.createElement('div');
+                                wrapper.className = 'graph-border-wrapper';
+                                charGraph.appendChild(wrapper);
+                            }
+                            wrapper.innerHTML = '';
+                            const canvas = document.createElement('canvas');
+                            canvas.width = 343; canvas.height = 343;
+                            canvas.style.display = 'block';
+                            canvas.style.margin = '0 auto 10px auto';
+                            canvas.style.background = 'rgba(255,255,255,0.13)';
+                            canvas.style.borderRadius = '16px';
+                            drawRadarChart(canvas, charStatMap[nm], statLabels);
+                            wrapper.appendChild(canvas);
+                        } else {
+                            charGraph.innerHTML = '(능력치 정보 없음)';
+                        }
+                        Array.from(charAltBtns.children).forEach(b => {
+                            b.style.background = (b.textContent === nm) ? 'linear-gradient(135deg,#228B22,#006400)' : 'linear-gradient(135deg,#006400,#228B22)';
+                            b.disabled = (b.textContent === nm);
+                        });
+                    });
+                    charAltBtns.appendChild(btn);
+                });
+            } else if (name === '주유') {
+                charAltBtns.innerHTML = '';
+                [
+                    '정보','주유','감녕','주태','주준','주연','장흠','손준','태사자','진무','정봉','육강','육손','능통','여몽','황개','고상','제갈각','서성'
+                ].forEach(function(nm) {
+                    const btn = document.createElement('button');
+                    btn.className = 'toggle-btn';
+                    btn.style.fontSize = '1em';
+                    btn.style.padding = '10px 24px';
+                    btn.style.borderRadius = '8px';
+                    btn.style.background = (nm === name) ? 'linear-gradient(135deg,#228B22,#006400)' : 'linear-gradient(135deg,#006400,#228B22)';
+                    btn.style.cursor = 'pointer';
+                    btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+                    btn.style.fontWeight = 'bold';
+                    btn.textContent = nm;
+                    if (nm === name) btn.disabled = true;
+                    btn.addEventListener('click', function(ev) {
+                        ev.stopPropagation();
+                        charNameBtn.textContent = nm;
+                        currentCharName = nm;
+                        // charGraph.innerHTML = '(여기에 능력치 그래프가 표시됩니다)';
+                        if (charStatMap[nm]) {
+                            charGraph.innerHTML = '';
+                            let wrapper = charGraph.querySelector('.graph-border-wrapper');
+                            if (!wrapper) {
+                                wrapper = document.createElement('div');
+                                wrapper.className = 'graph-border-wrapper';
+                                charGraph.appendChild(wrapper);
+                            }
+                            wrapper.innerHTML = '';
+                            const canvas = document.createElement('canvas');
+                            canvas.width = 343; canvas.height = 343;
+                            canvas.style.display = 'block';
+                            canvas.style.margin = '0 auto 10px auto';
+                            canvas.style.background = 'rgba(255,255,255,0.13)';
+                            canvas.style.borderRadius = '16px';
+                            drawRadarChart(canvas, charStatMap[nm], statLabels);
+                            wrapper.appendChild(canvas);
+                        } else {
+                            charGraph.innerHTML = '(능력치 정보 없음)';
+                        }
+                        Array.from(charAltBtns.children).forEach(b => {
+                            b.style.background = (b.textContent === nm) ? 'linear-gradient(135deg,#228B22,#006400)' : 'linear-gradient(135deg,#006400,#228B22)';
+                            b.disabled = (b.textContent === nm);
+                        });
+                    });
+                    charAltBtns.appendChild(btn);
+                });
+            } else if (name === '노숙') {
+                charAltBtns.innerHTML = '';
+                [
+                    '노숙','고옹','장홍','장소','보지','육개'
+                ].forEach(function(nm) {
+                    const btn = document.createElement('button');
+                    btn.className = 'toggle-btn';
+                    btn.style.fontSize = '1em';
+                    btn.style.padding = '10px 24px';
+                    btn.style.borderRadius = '8px';
+                    btn.style.background = (nm === name) ? 'linear-gradient(135deg,#228B22,#006400)' : 'linear-gradient(135deg,#006400,#228B22)';
+                    btn.style.cursor = 'pointer';
+                    btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+                    btn.style.fontWeight = 'bold';
+                    btn.textContent = nm;
+                    if (nm === name) btn.disabled = true;
+                    btn.addEventListener('click', function(ev) {
+                        ev.stopPropagation();
+                        charNameBtn.textContent = nm;
+                        currentCharName = nm;
+                        // charGraph.innerHTML = '(여기에 능력치 그래프가 표시됩니다)';
+                        if (charStatMap[nm]) {
+                            charGraph.innerHTML = '';
+                            let wrapper = charGraph.querySelector('.graph-border-wrapper');
+                            if (!wrapper) {
+                                wrapper = document.createElement('div');
+                                wrapper.className = 'graph-border-wrapper';
+                                charGraph.appendChild(wrapper);
+                            }
+                            wrapper.innerHTML = '';
+                            const canvas = document.createElement('canvas');
+                            canvas.width = 343; canvas.height = 343;
+                            canvas.style.display = 'block';
+                            canvas.style.margin = '0 auto 10px auto';
+                            canvas.style.background = 'rgba(255,255,255,0.13)';
+                            canvas.style.borderRadius = '16px';
+                            drawRadarChart(canvas, charStatMap[nm], statLabels);
+                            wrapper.appendChild(canvas);
+                        } else {
+                            charGraph.innerHTML = '(능력치 정보 없음)';
+                        }
+                        Array.from(charAltBtns.children).forEach(b => {
+                            b.style.background = (b.textContent === nm) ? 'linear-gradient(135deg,#228B22,#006400)' : 'linear-gradient(135deg,#006400,#228B22)';
+                            b.disabled = (b.textContent === nm);
+                        });
+                    });
+                    charAltBtns.appendChild(btn);
+                });
+            } else if (name === '유비') {
+                charAltBtns.innerHTML = '';
+                [
+                    '유비','유선'
+                ].forEach(function(nm) {
+                    const btn = document.createElement('button');
+                    btn.className = 'toggle-btn';
+                    btn.style.fontSize = '1em';
+                    btn.style.padding = '10px 24px';
+                    btn.style.borderRadius = '8px';
+                    btn.style.background = (nm === name) ? 'linear-gradient(135deg,#A0522D,#D2691E)' : 'linear-gradient(135deg,#D2691E,#A0522D)';
+                    btn.style.cursor = 'pointer';
+                    btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+                    btn.style.fontWeight = 'bold';
+                    btn.textContent = nm;
+                    if (nm === name) btn.disabled = true;
+                    btn.addEventListener('click', function(ev) {
+                        ev.stopPropagation();
+                        charNameBtn.textContent = nm;
+                        currentCharName = nm;
+                        // charGraph.innerHTML = '(여기에 능력치 그래프가 표시됩니다)';
+                        if (charStatMap[nm]) {
+                            charGraph.innerHTML = '';
+                            let wrapper = charGraph.querySelector('.graph-border-wrapper');
+                            if (!wrapper) {
+                                wrapper = document.createElement('div');
+                                wrapper.className = 'graph-border-wrapper';
+                                charGraph.appendChild(wrapper);
+                            }
+                            wrapper.innerHTML = '';
+                            const canvas = document.createElement('canvas');
+                            canvas.width = 343; canvas.height = 343;
+                            canvas.style.display = 'block';
+                            canvas.style.margin = '0 auto 10px auto';
+                            canvas.style.background = 'rgba(255,255,255,0.13)';
+                            canvas.style.borderRadius = '16px';
+                            drawRadarChart(canvas, charStatMap[nm], statLabels);
+                            wrapper.appendChild(canvas);
+                        } else {
+                            charGraph.innerHTML = '(능력치 정보 없음)';
+                        }
+                        Array.from(charAltBtns.children).forEach(b => {
+                            b.style.background = (b.textContent === nm) ? 'linear-gradient(135deg,#A0522D,#D2691E)' : 'linear-gradient(135deg,#D2691E,#A0522D)';
+                            b.disabled = (b.textContent === nm);
+                        });
+                    });
+                    charAltBtns.appendChild(btn);
+                });
+            } else if (name === '관우') {
+                charAltBtns.innerHTML = '';
+                [
+                    '관우','장비','조운','마초','황충','위연','강유','관평','관흥','장포','장익','마대','이엄'
+                ].forEach(function(nm) {
+                    const btn = document.createElement('button');
+                    btn.className = 'toggle-btn';
+                    btn.style.fontSize = '1em';
+                    btn.style.padding = '10px 24px';
+                    btn.style.borderRadius = '8px';
+                    btn.style.background = (nm === name) ? 'linear-gradient(135deg,#A0522D,#D2691E)' : 'linear-gradient(135deg,#D2691E,#A0522D)';
+                    btn.style.cursor = 'pointer';
+                    btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+                    btn.style.fontWeight = 'bold';
+                    btn.textContent = nm;
+                    if (nm === name) btn.disabled = true;
+                    btn.addEventListener('click', function(ev) {
+                        ev.stopPropagation();
+                        charNameBtn.textContent = nm;
+                        currentCharName = nm;
+                        // charGraph.innerHTML = '(여기에 능력치 그래프가 표시됩니다)';
+                        if (charStatMap[nm]) {
+                            charGraph.innerHTML = '';
+                            let wrapper = charGraph.querySelector('.graph-border-wrapper');
+                            if (!wrapper) {
+                                wrapper = document.createElement('div');
+                                wrapper.className = 'graph-border-wrapper';
+                                charGraph.appendChild(wrapper);
+                            }
+                            wrapper.innerHTML = '';
+                            const canvas = document.createElement('canvas');
+                            canvas.width = 343; canvas.height = 343;
+                            canvas.style.display = 'block';
+                            canvas.style.margin = '0 auto 10px auto';
+                            canvas.style.background = 'rgba(255,255,255,0.13)';
+                            canvas.style.borderRadius = '16px';
+                            drawRadarChart(canvas, charStatMap[nm], statLabels);
+                            wrapper.appendChild(canvas);
+                        } else {
+                            charGraph.innerHTML = '(능력치 정보 없음)';
+                        }
+                        Array.from(charAltBtns.children).forEach(b => {
+                            b.style.background = (b.textContent === nm) ? 'linear-gradient(135deg,#A0522D,#D2691E)' : 'linear-gradient(135deg,#D2691E,#A0522D)';
+                            b.disabled = (b.textContent === nm);
+                        });
+                    });
+                    charAltBtns.appendChild(btn);
+                });
+            } else if (name === '제갈량') {
+                charAltBtns.innerHTML = '';
+                [
+                    '제갈량','이적','한숭','간옹','황권','장완','서서','손건','장송','진진','진등','마속','마량','비의','미축','법정','방통','양의','이회'
+                ].forEach(function(nm) {
+                    const btn = document.createElement('button');
+                    btn.className = 'toggle-btn';
+                    btn.style.fontSize = '1em';
+                    btn.style.padding = '10px 24px';
+                    btn.style.borderRadius = '8px';
+                    btn.style.background = (nm === name) ? 'linear-gradient(135deg,#A0522D,#D2691E)' : 'linear-gradient(135deg,#D2691E,#A0522D)';
+                    btn.style.cursor = 'pointer';
+                    btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+                    btn.style.fontWeight = 'bold';
+                    btn.textContent = nm;
+                    if (nm === name) btn.disabled = true;
+                    btn.addEventListener('click', function(ev) {
+                        ev.stopPropagation();
+                        charNameBtn.textContent = nm;
+                        currentCharName = nm;
+                        // charGraph.innerHTML = '(여기에 능력치 그래프가 표시됩니다)';
+                        if (charStatMap[nm]) {
+                            charGraph.innerHTML = '';
+                            let wrapper = charGraph.querySelector('.graph-border-wrapper');
+                            if (!wrapper) {
+                                wrapper = document.createElement('div');
+                                wrapper.className = 'graph-border-wrapper';
+                                charGraph.appendChild(wrapper);
+                            }
+                            wrapper.innerHTML = '';
+                            const canvas = document.createElement('canvas');
+                            canvas.width = 343; canvas.height = 343;
+                            canvas.style.display = 'block';
+                            canvas.style.margin = '0 auto 10px auto';
+                            canvas.style.background = 'rgba(255,255,255,0.13)';
+                            canvas.style.borderRadius = '16px';
+                            drawRadarChart(canvas, charStatMap[nm], statLabels);
+                            wrapper.appendChild(canvas);
+                        } else {
+                            charGraph.innerHTML = '(능력치 정보 없음)';
+                        }
+                        Array.from(charAltBtns.children).forEach(b => {
+                            b.style.background = (b.textContent === nm) ? 'linear-gradient(135deg,#A0522D,#D2691E)' : 'linear-gradient(135deg,#D2691E,#A0522D)';
+                            b.disabled = (b.textContent === nm);
+                        });
+                    });
+                    charAltBtns.appendChild(btn);
+                });
+            } else if (name === '원소') {
+                charAltBtns.innerHTML = '';
+                [
+                    '원소','원술','공손찬','유표','장로','마등','공융'
+                ].forEach(function(nm) {
+                    const btn = document.createElement('button');
+                    btn.className = 'toggle-btn';
+                    btn.style.fontSize = '1em';
+                    btn.style.padding = '10px 24px';
+                    btn.style.borderRadius = '8px';
+                    btn.style.background = (nm === name) ? 'linear-gradient(135deg,#4682B4,#708090)' : 'linear-gradient(135deg,#708090,#4682B4)';
+                    btn.style.cursor = 'pointer';
+                    btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+                    btn.style.fontWeight = 'bold';
+                    btn.textContent = nm;
+                    if (nm === name) btn.disabled = true;
+                    btn.addEventListener('click', function(ev) {
+                        ev.stopPropagation();
+                        charNameBtn.textContent = nm;
+                        currentCharName = nm;
+                        // charGraph.innerHTML = '(여기에 능력치 그래프가 표시됩니다)';
+                        if (charStatMap[nm]) {
+                            charGraph.innerHTML = '';
+                            let wrapper = charGraph.querySelector('.graph-border-wrapper');
+                            if (!wrapper) {
+                                wrapper = document.createElement('div');
+                                wrapper.className = 'graph-border-wrapper';
+                                charGraph.appendChild(wrapper);
+                            }
+                            wrapper.innerHTML = '';
+                            const canvas = document.createElement('canvas');
+                            canvas.width = 343; canvas.height = 343;
+                            canvas.style.display = 'block';
+                            canvas.style.margin = '0 auto 10px auto';
+                            canvas.style.background = 'rgba(255,255,255,0.13)';
+                            canvas.style.borderRadius = '16px';
+                            drawRadarChart(canvas, charStatMap[nm], statLabels);
+                            wrapper.appendChild(canvas);
+                        } else {
+                            charGraph.innerHTML = '(능력치 정보 없음)';
+                        }
+                        Array.from(charAltBtns.children).forEach(b => {
+                            b.style.background = (b.textContent === nm) ? 'linear-gradient(135deg,#4682B4,#708090)' : 'linear-gradient(135deg,#708090,#4682B4)';
+                            b.disabled = (b.textContent === nm);
+                        });
+                    });
+                    charAltBtns.appendChild(btn);
+                });
+            } else if (name === '여포') {
+                charAltBtns.innerHTML = '';
+                [
+                    '여포','안량','문추','왕준','곽사','학소','하진','기령','고순','황조','황보숭','채모','동승','동차나','모개','이각','노식'
+                ].forEach(function(nm) {
+                    const btn = document.createElement('button');
+                    btn.className = 'toggle-btn';
+                    btn.style.fontSize = '1em';
+                    btn.style.padding = '10px 24px';
+                    btn.style.borderRadius = '8px';
+                    btn.style.background = (nm === name) ? 'linear-gradient(135deg,#4682B4,#708090)' : 'linear-gradient(135deg,#708090,#4682B4)';
+                    btn.style.cursor = 'pointer';
+                    btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+                    btn.style.fontWeight = 'bold';
+                    btn.textContent = nm;
+                    if (nm === name) btn.disabled = true;
+                    btn.addEventListener('click', function(ev) {
+                        ev.stopPropagation();
+                        charNameBtn.textContent = nm;
+                        currentCharName = nm;
+                        // charGraph.innerHTML = '(여기에 능력치 그래프가 표시됩니다)';
+                        if (charStatMap[nm]) {
+                            charGraph.innerHTML = '';
+                            let wrapper = charGraph.querySelector('.graph-border-wrapper');
+                            if (!wrapper) {
+                                wrapper = document.createElement('div');
+                                wrapper.className = 'graph-border-wrapper';
+                                charGraph.appendChild(wrapper);
+                            }
+                            wrapper.innerHTML = '';
+                            const canvas = document.createElement('canvas');
+                            canvas.width = 343; canvas.height = 343;
+                            canvas.style.display = 'block';
+                            canvas.style.margin = '0 auto 10px auto';
+                            canvas.style.background = 'rgba(255,255,255,0.13)';
+                            canvas.style.borderRadius = '16px';
+                            drawRadarChart(canvas, charStatMap[nm], statLabels);
+                            wrapper.appendChild(canvas);
+                        } else {
+                            charGraph.innerHTML = '(능력치 정보 없음)';
+                        }
+                        Array.from(charAltBtns.children).forEach(b => {
+                            b.style.background = (b.textContent === nm) ? 'linear-gradient(135deg,#4682B4,#708090)' : 'linear-gradient(135deg,#708090,#4682B4)';
+                            b.disabled = (b.textContent === nm);
+                        });
+                    });
+                    charAltBtns.appendChild(btn);
+                });
+            } else if (name === '진궁') {
+                charAltBtns.innerHTML = '';
+                [
+                    '진궁','왕윤','왕보','괴월','곽도','사마휘','심배','저수','전풍','이유'
+                ].forEach(function(nm) {
+                    const btn = document.createElement('button');
+                    btn.className = 'toggle-btn';
+                    btn.style.fontSize = '1em';
+                    btn.style.padding = '10px 24px';
+                    btn.style.borderRadius = '8px';
+                    btn.style.background = (nm === name) ? 'linear-gradient(135deg,#4682B4,#708090)' : 'linear-gradient(135deg,#708090,#4682B4)';
+                    btn.style.cursor = 'pointer';
+                    btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
+                    btn.style.fontWeight = 'bold';
+                    btn.textContent = nm;
+                    if (nm === name) btn.disabled = true;
+                    btn.addEventListener('click', function(ev) {
+                        ev.stopPropagation();
+                        charNameBtn.textContent = nm;
+                        currentCharName = nm;
+                        // charGraph.innerHTML = '(여기에 능력치 그래프가 표시됩니다)';
+                        if (charStatMap[nm]) {
+                            charGraph.innerHTML = '';
+                            let wrapper = charGraph.querySelector('.graph-border-wrapper');
+                            if (!wrapper) {
+                                wrapper = document.createElement('div');
+                                wrapper.className = 'graph-border-wrapper';
+                                charGraph.appendChild(wrapper);
+                            }
+                            wrapper.innerHTML = '';
+                            const canvas = document.createElement('canvas');
+                            canvas.width = 343; canvas.height = 343;
+                            canvas.style.display = 'block';
+                            canvas.style.margin = '0 auto 10px auto';
+                            canvas.style.background = 'rgba(255,255,255,0.13)';
+                            canvas.style.borderRadius = '16px';
+                            drawRadarChart(canvas, charStatMap[nm], statLabels);
+                            wrapper.appendChild(canvas);
+                        } else {
+                            charGraph.innerHTML = '(능력치 정보 없음)';
+                        }
+                        Array.from(charAltBtns.children).forEach(b => {
+                            b.style.background = (b.textContent === nm) ? 'linear-gradient(135deg,#4682B4,#708090)' : 'linear-gradient(135deg,#708090,#4682B4)';
+                            b.disabled = (b.textContent === nm);
+                        });
+                    });
+                    charAltBtns.appendChild(btn);
+                });
+            } else {
+                charAltBtns.innerHTML = '';
+            }
+            charOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    // 인물 상세 오버레이 닫기(X 버튼, ESC, 바깥 클릭)
+    const charClose = document.getElementById('character-detail-close-btn');
+    charClose.addEventListener('click', function() {
+        charOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+        charAltBtns.innerHTML = '';
+    });
+    charOverlay.addEventListener('click', function(e) {
+        if (e.target === charOverlay) {
+            charOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            charAltBtns.innerHTML = '';
+        }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            charOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            charAltBtns.innerHTML = '';
+        }
+    });
+
+    // === 능력치 CSV 파싱 ===
+    const charStatMap = {};
+    const statLabels = ['통솔력','결단력','전투력','통찰력','인망','실행력','전략전술','의리'];
+    const statOrder = ['통솔력','결단력','전투력','통찰력','인망','실행력','전략전술','의리'];
+    // CSV 데이터 (173character.csv) - 빌트인으로 삽입
+    const csvData = `인물,통솔력,결단력,전투력,통찰력,인망,실행력,전략전술,의리
+이적,7,6,4,8,8,5,7,7
+우금,9,7,3,5,5,8,5,3
+원희,9,7,3,5,5,8,5,3
+원술,2,2,1,2,1,3,3,1
+원상,3,2,6,2,2,2,2,1
+원소,6,2,5,4,4,4,2,3
+원담,6,5,5,5,4,6,6,5
+왕윤,9,7,2,8,8,9,9,7
+왕준,9,9,5,9,7,9,9,7
+왕평,6,7,7,7,7,7,5,8
+왕보,5,5,4,7,6,4,5,6
+괴월,7,8,4,9,4,8,9,1
+가규,8,9,7,6,6,8,8,8
+화흠,8,8,1,9,8,8,3,5
+가후,6,9,2,9,8,9,9,6
+곽가,5,8,1,8,5,8,8,8
+곽사,6,5,7,1,1,5,1,1
+학소,7,7,7,5,8,7,7,7
+낙진,6,7,8,5,6,7,6,8
+곽도,5,7,3,7,4,6,6,5
+곽회,6,5,6,5,6,6,5,8
+하후연,7,6,7,2,6,5,2,7
+하후돈,9,5,9,4,7,6,4,7
+하후모,1,3,1,1,2,3,2,1
+가충,8,8,1,8,5,9,5,5
+하진,6,2,4,4,3,4,7,5
+관우,9,5,10,8,9,8,7,10
+무구검,8,5,2,4,5,8,6,7
+관흥,7,7,8,5,7,7,5,6
+관소,5,5,6,6,5,5,5,7
+한수,7,5,6,6,7,7,6,7
+한숭,7,8,8,8,7,8,8,6
+관택,6,7,3,7,7,7,6,6
+감녕,8,8,9,9,2,5,7,8
+한복,4,4,3,4,4,4,3,3
+관평,7,6,8,6,7,6,5,8
+간옹,5,6,4,7,7,6,7,7
+안량,7,7,9,6,6,7,7,7
+위연,8,8,9,5,3,7,7,4
+강유,9,9,8,9,8,9,8,9
+허저,7,8,9,5,7,8,9,8
+허유,2,8,2,5,2,7,8,3
+기령,7,7,9,5,5,7,4,8
+엄안,8,6,8,6,7,6,5,7
+한헌제,5,5,1,1,2,4,2,6
+오의,6,5,5,6,5,5,4,6
+황개,7,6,7,3,6,7,8,8
+황권,6,7,5,7,7,7,6,8
+고순,8,8,6,6,6,5,8,7
+고상,5,5,4,4,5,4,5,6
+황조,2,2,6,1,1,5,3,1
+공손연,7,4,3,2,2,3,2,1
+공손찬,8,7,9,5,5,7,3,8
+황충,8,9,9,7,9,8,7,9
+황보숭,8,6,5,6,7,7,8,8
+공융,8,9,5,4,8,9,7,8
+고옹,7,7,3,6,5,6,5,6
+채모,7,6,5,3,4,5,4,1
+사마의,9,9,6,10,9,10,10,6
+사마염,8,8,9,8,9,8,9,9
+사마휘,2,5,2,8,8,5,7,8
+사마사,8,6,6,6,4,7,5,2
+사마소,9,9,7,9,8,8,7,6
+주창,7,7,9,5,8,7,7,9
+주태,6,4,8,2,8,8,2,5
+주유,10,9,8,9,9,8,8,9
+주준,8,6,4,5,8,7,7,8
+주연,6,7,7,6,6,7,8,7
+순욱,9,9,8,7,9,7,9,9
+순유,5,7,7,9,7,7,7,9
+장완,8,7,5,8,9,6,5,9
+종회,5,7,6,6,5,6,5,3
+장흠,7,7,7,5,6,8,5,6
+제갈각,4,4,3,3,4,6,4,3
+제갈근,6,6,5,7,10,6,5,9
+제갈탄,8,8,5,7,7,8,5,6
+제갈량,10,10,2,10,10,8,10,10
+서황,8,8,9,5,8,8,7,9
+서서,9,8,8,9,7,8,6,9
+서성,7,8,9,5,6,7,8,9
+심배,6,7,7,8,4,8,7,9
+조예,8,8,4,7,9,8,8,6
+조휴,5,4,5,3,5,4,7,8
+조홍,8,8,6,5,7,8,4,8
+조장,6,6,8,4,5,6,5,6
+조식,3,5,3,3,4,5,3,2
+조진,8,8,8,4,9,8,8,9
+조인,9,9,8,6,7,9,4,8
+조조,10,10,7,10,8,10,10,5
+조상,5,4,3,2,3,5,3,4
+조비,10,9,5,9,9,9,9,5
+저수,3,8,4,8,8,8,8,9
+손권,10,9,9,8,8,9,8,9
+손견,8,7,9,7,8,8,6,8
+손건,6,7,5,7,7,6,7,7
+손호,2,2,3,2,1,2,2,1
+손책,9,7,9,7,9,7,7,10
+손준,3,4,4,1,1,4,2,1
+태사자,8,7,8,6,8,8,6,9
+조운,9,9,10,7,9,9,9,9
+장각,10,8,9,9,9,9,7,8
+장억,8,7,8,7,8,8,7,7
+장합,7,7,7,9,7,8,9,7
+장홍,6,8,6,8,8,8,7,8
+장수,7,8,6,7,7,7,7,8
+장소,8,5,1,5,7,8,3,5
+장송,7,7,7,8,9,6,9,4
+장비,8,9,10,4,5,9,7,9
+장포,7,8,8,6,8,7,7,8
+장익,7,7,7,7,7,7,6,8
+장료,9,6,7,7,9,9,7,9
+장로,9,8,2,8,9,6,7,5
+진궁,5,8,5,6,6,8,8,8
+진군,8,8,1,8,8,8,6,9
+진진,9,8,3,8,8,8,3,8
+진등,7,8,6,8,7,8,7,7
+진무,7,6,7,3,6,7,6,8
+진림,1,8,1,8,7,9,2,5
+정욱,6,8,7,8,5,8,9,6
+정보,8,8,9,8,9,8,8,9
+정봉,7,8,9,3,2,6,8,2
+전위,4,8,9,4,7,8,5,9
+전풍,6,8,4,9,7,8,9,7
+등애,7,6,7,6,7,7,8,7
+등지,6,7,5,9,8,8,6,8
+동승,6,4,2,6,7,4,7,8
+동탁,7,8,8,4,3,9,4,5
+동차나,7,7,5,4,7,7,4,6
+두예,8,9,7,8,7,9,9,8
+마속,6,8,2,5,5,8,7,8
+마대,6,7,8,8,7,7,6,8
+마충,7,7,6,7,9,8,6,8
+마초,8,7,9,5,8,7,5,7
+마등,7,7,8,5,6,7,5,8
+마량,6,4,5,7,9,6,8,8
+비의,7,6,4,4,6,6,5,6
+비시,8,9,5,8,7,9,8,8
+미축,4,8,6,8,8,8,8,9
+문추,7,7,9,6,6,7,7,7
+법정,8,8,6,8,9,8,7,5
+방통,4,8,5,9,3,9,10,7
+방덕,6,7,8,5,7,7,6,7
+보지,6,6,3,5,6,5,5,7
+만총,8,8,5,6,8,9,8,9
+모개,5,8,3,9,8,8,7,8
+맹획,7,7,7,1,5,8,3,4
+맹달,3,3,8,3,1,3,5,1
+양의,7,7,3,4,4,7,5,7
+이회,8,7,8,8,8,7,8,7
+이각,7,4,7,3,3,7,5,8
+육개,6,6,5,8,6,7,7,8
+육강,8,6,5,5,8,7,7,8
+육손,9,8,9,8,9,8,9,8
+이엄,8,4,9,6,7,5,5,7
+이유,7,8,4,8,4,8,9,3
+이전,7,8,6,6,8,8,8,8
+유기,3,4,3,5,2,3,7,9
+유우,7,7,6,5,8,7,6,8
+유장,3,1,1,2,1,1,3,1
+유심,3,8,4,3,9,8,3,9
+유선,2,4,1,1,2,4,1,2
+유종,1,5,1,5,2,3,1,5
+유비,7,5,8,4,10,5,4,7
+유표,5,3,3,5,7,6,4,5
+유봉,8,6,8,3,4,8,4,2
+요화,8,7,7,8,6,9,6,8
+능통,8,8,7,7,8,8,6,8
+여범,4,4,4,6,3,5,3,7
+여포,6,5,10,1,1,7,3,1
+여몽,8,7,8,7,8,7,8,8
+한영제,3,4,6,2,5,3,1,3
+노숙,7,7,5,9,5,8,8,8
+노식,8,4,7,6,8,5,7,9`;
+    csvData.split('\n').slice(1).forEach(row => {
+        const arr = row.split(',');
+        if (arr.length === 9) {
+            charStatMap[arr[0].trim()] = arr.slice(1).map(x => +x);
+        }
+    });
+
+    // === 레이더 차트 그리기 ===
+    function drawRadarChart(canvas, stats, labels) {
+        // 실제 표시 크기 기준으로 canvas 크기 동적 조정 (반응형, 가로를 더 넓게)
+        const rect = canvas.getBoundingClientRect();
+        const minH = 260; // 최소 세로 크기
+        const h = Math.max(minH, Math.min(Math.floor(rect.height), 600));
+        const w = Math.max(minH * 1.25, Math.min(Math.floor(rect.width), 750)); // 가로를 세로의 1.25배로
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0,0,w,h);
+        // 내부 패딩(그래프와 텍스트가 잘리지 않도록)
+        const size = Math.min(w, h);
+        const padding = Math.max(24, Math.floor(size * 0.13));
+        const cx = w/2, cy = h/2, r = (size - padding*2) * 0.40;
+        const N = stats.length;
+        // 배경 원
+        ctx.save();
+        ctx.globalAlpha = 0.13;
+        ctx.beginPath(); ctx.arc(cx,cy,r+10,0,2*Math.PI); ctx.fillStyle='#b6b6b6'; ctx.fill();
+        ctx.globalAlpha = 1;
+        // 축선 및 라벨
+        // 폰트 크기를 반응형으로 조정 (canvas 크기에 따라)
+        const fontSizePx = Math.max(12, Math.floor(size * 0.08));
+        ctx.font = `bold ${fontSizePx}px "Pretendard","Inter",sans-serif`;
+        const labelPadding = Math.max(16, Math.floor(size * 0.07));
+        // 라벨을 원에서 한 폰트 거리만큼만 띄움
+        const labelRadius = r + fontSizePx * 1.1 + labelPadding;
+        for(let i=0;i<N;i++){
+            const angle = -Math.PI/2 + i*2*Math.PI/N;
+            // 네 개 주요 라벨만 원 중심 방향으로 더 끌어오되, 원 밖에 위치
+            let thisLabelRadius = labelRadius;
+            if (labels[i] === '전략전술' || labels[i] === '전투력') {
+                thisLabelRadius = (r + fontSizePx * 0.45 + labelPadding * 0.7) - fontSizePx * 0.5;
+            } else if (labels[i] === '통솔력' || labels[i] === '인망') {
+                thisLabelRadius = r + fontSizePx * 0.45 + labelPadding * 0.7;
+            } else if (i === 2 || i === 6) {
+                thisLabelRadius = r + fontSizePx * 1.5 + labelPadding * 1.2;
+            }
+            const x = cx + Math.cos(angle)*thisLabelRadius;
+            const y = cy + Math.sin(angle)*thisLabelRadius;
+            // 각도에 따라 정렬 동적 설정
+            if (Math.abs(Math.cos(angle)) > 0.95) {
+                ctx.textAlign = (Math.cos(angle) > 0) ? 'left' : 'right';
+                ctx.textBaseline = 'middle';
+            } else if (Math.abs(Math.sin(angle)) > 0.95) {
+                ctx.textAlign = 'center';
+                ctx.textBaseline = (Math.sin(angle) > 0) ? 'top' : 'bottom';
+            } else {
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+            }
+            ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(angle)*r,cy+Math.sin(angle)*r); ctx.strokeStyle='#aaa'; ctx.lineWidth=1.2; ctx.stroke();
+            ctx.fillStyle = '#444';
+            ctx.fillText(labels[i], x, y);
+        }
+        // 능력치 폴리곤
+        ctx.beginPath();
+        for(let i=0;i<N;i++){
+            const v = stats[i]/10;
+            const angle = -Math.PI/2 + i*2*Math.PI/N;
+            const x = cx + Math.cos(angle)*r*v;
+            const y = cy + Math.sin(angle)*r*v;
+            if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+        }
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(70,130,180,0.18)';
+        ctx.strokeStyle = '#4682B4';
+        ctx.lineWidth = Math.max(2, Math.floor(size*0.012));
+        ctx.fill(); ctx.stroke();
+        // 능력치 점
+        for(let i=0;i<N;i++){
+            const v = stats[i]/10;
+            const angle = -Math.PI/2 + i*2*Math.PI/N;
+            const x = cx + Math.cos(angle)*r*v;
+            const y = cy + Math.sin(angle)*r*v;
+            ctx.beginPath(); ctx.arc(x,y,Math.max(4,Math.floor(size*0.017)),0,2*Math.PI);
+            ctx.fillStyle = '#4682B4';
+            ctx.fill();
+            ctx.strokeStyle = '#fff'; ctx.lineWidth = Math.max(1.5, Math.floor(size*0.008)); ctx.stroke();
+        }
+        ctx.restore();
+    }
+
+    // === 군주, 장군, 모사, 인성 박스 효과 ===
+    // category-modal-box 들을 모두 가져옴
+    const categoryBoxes = document.querySelectorAll('#character-category-modals .category-modal-box');
+    // 군주 하위 버튼(통솔력, 결단력) 클릭 시 군주 박스에만 효과
+    if (categoryBoxes.length > 0) {
+      const lordBox = categoryBoxes[0];
+      const lordBtns = lordBox.querySelectorAll('.subcat-btn');
+      lordBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          // 군주 박스에 강조 효과 추가
+          lordBox.style.boxShadow = '0 0 0 4px #A0522D, 0 2px 12px #d2b48c33';
+          lordBox.style.background = 'linear-gradient(135deg,#fbeee6 80%, #e2d2b6 100%)';
+          // 나머지 박스는 원래대로
+          categoryBoxes.forEach((box, idx) => {
+            if (idx !== 0) {
+              box.style.boxShadow = '0 2px 12px #d2b48c33';
+              box.style.background = '#f8f4eb';
+            }
+          });
+        });
+      });
+      // 기타 박스 클릭 시 군주 박스 효과 해제
+      for (let i = 1; i < categoryBoxes.length; i++) {
+        const btns = categoryBoxes[i].querySelectorAll('.subcat-btn');
+        btns.forEach(btn => {
+          btn.addEventListener('click', function() {
+            lordBox.style.boxShadow = '0 2px 12px #d2b48c33';
+            lordBox.style.background = '#f8f4eb';
+          });
+        });
+      }
+    }
+})();
+</script>
 </body>
 </html>
