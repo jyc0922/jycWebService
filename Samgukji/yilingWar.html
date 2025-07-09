@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이릉대전 - 준비 중</title>
+    <style>
+        :root {
+            --header-height: 80px;
+            --footer-height: 60px;
+            --primary-bg-color: rgba(245, 241, 230, 0.95);
+            --footer-text-color: #5D4037;
+            --text-color: #2c2c2c;
+        }
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: stretch;
+            background: url('images/yilingbattle.png') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+        .overlay {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - var(--footer-height));
+            background: rgba(245, 241, 230, 0.80); /* 양피지 느낌 반투명 오버레이 */
+        }
+        .message {
+            font-size: 2.2em;
+            color: var(--text-color);
+            background: rgba(255,255,255,0.85);
+            border-radius: 18px;
+            padding: 40px 32px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+            text-align: center;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+        }
+        footer {
+            height: var(--footer-height);
+            background-color: var(--primary-bg-color);
+            font-size: 1em;
+            text-align: center;
+            line-height: var(--footer-height);
+            color: var(--footer-text-color);
+            border-top: 2px solid #D2B48C;
+            box-shadow: 0 -4px 8px rgba(0,0,0,0.08);
+            border-radius: 15px 15px 0 0;
+        }
+        @media (max-width: 600px) {
+            .message {
+                font-size: 1.2em;
+                padding: 24px 10px;
+            }
+            .overlay {
+                min-height: calc(100vh - var(--footer-height));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="message">
+            준비 중입니다.<br>기다려 주셔서 감사합니다.
+        </div>
+    </div>
+    <footer>
+        저작권&copy;2025 김우성 /
+        <a href="https://naver.com" target="_blank">네이버</a>
+        <a href="https://chatgpt.com/" target="_blank">ChatGPT</a>
+        <a href="https://gemini.google.com/" target="_blank">Gemini</a>
+    </footer>
+</body>
+</html>
