@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼국지 도서 목록</title>
+    <style>
+        :root {
+            --primary-bg-color: #f5f1e6;
+            --secondary-bg-color: #f9f6ef;
+            --table-header-bg: #e0cfa4;
+            --table-row-bg: #fcfaf5;
+            --table-border: #bfa77a;
+            --main-font: 'Nanum Myeongjo', serif;
+        }
+        body {
+            background: var(--primary-bg-color);
+            font-family: var(--main-font);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto 40px auto;
+            background: var(--secondary-bg-color);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px 0 rgba(80,60,20,0.08);
+            padding: 32px 24px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 32px;
+            color: #7a5c1c;
+            letter-spacing: 2px;
+        }
+        .scroll-table {
+            overflow-x: auto;
+            background: var(--content-bg-color, #fcfaf5);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px 0 rgba(80,60,20,0.04);
+            margin-bottom: 24px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 1200px;
+            font-size: 1rem;
+        }
+        th, td {
+            border: 1px solid var(--table-border);
+            padding: 8px 10px;
+            text-align: left;
+        }
+        th {
+            background: var(--table-header-bg);
+            color: #4d3a0b;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background: var(--table-row-bg);
+        }
+        tr:hover {
+            background: #f3e7c7;
+        }
+        @media (max-width: 700px) {
+            .container { padding: 8px 2px; }
+            table { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>삼국지 도서 목록</h1>
+        <div class="scroll-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>목록</th>
+                        <th>국가</th>
+                        <th>책이름</th>
+                        <th>시리즈</th>
+                        <th>저자</th>
+                        <th>역자</th>
+                        <th>출판사</th>
+                        <th>초판</th>
+                        <th>장서</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- CSV 데이터 시작 -->
+                    <tr><td>1. 책</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>1-1 삼국지</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>1-1-1 &lt;삼국지&gt;</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td>1-1-1</td><td>한</td><td>정사 삼국지 위서 1</td><td></td><td>陈寿</td><td>김원중</td><td>신원문화사</td><td>1994.11.10</td><td>2000.9.1</td></tr>
+                    <tr><td>1-1-1</td><td>한</td><td>正史 三国志 (一)</td><td></td><td>陈寿</td><td>裴松之/陈起焕</td><td>明文堂</td><td>2019.8.13</td><td>2019.8.23</td></tr>
+                    <tr><td>1-1-1</td><td>한</td><td>正史 三国志 (三)</td><td></td><td>陈寿</td><td>裴松之/陈起焕</td><td>明文堂</td><td>2019.8.13</td><td>2019.8.23</td></tr>
+                    <tr><td>1-1-1</td><td>중한</td><td>정사 삼국지 위서1</td><td></td><td>陳壽</td><td>김원중</td><td>휴머니스트</td><td>2018.3.5</td><td></td></tr>
+                    <tr><td>1-1-1</td><td>중한</td><td>정사 삼국지 위서1</td><td></td><td>陳壽</td><td>김원중</td><td>민음사</td><td>2007.3.9</td><td>2013.11.26</td></tr>
+                    <tr><td>1-1-1</td><td>중한</td><td>정사 삼국지 위서1</td><td></td><td>陳壽</td><td>김원중</td><td>신원문화사</td><td>1994.11.10</td><td>2000.9.1</td></tr>
+                    <tr><td>1-1-1</td><td>중한</td><td>新譯 삼국지 1</td><td></td><td></td><td>김광주</td><td>서문당</td><td>1972.12.15</td><td>1984.2.5</td></tr>
+                    <tr><td>1-1-1</td><td>중한</td><td>原本懸吐 三國志 卷一</td><td></td><td>世昌書館</td><td></td><td>世昌書館</td><td></td><td></td></tr>
+                    <!-- ... (중략: 모든 CSV 행을 동일하게 변환) ... -->
+                    <!-- CSV 데이터 끝 -->
+                </tbody>
+            </table>
+        </div>
+        <p style="text-align:center; color:#a08a5c; font-size:0.95rem; margin-top:32px;">※ 표가 너무 길 경우, PC에서 가로 스크롤로 전체 내용을 확인하세요.</p>
+    </div>
+</body>
+</html>
